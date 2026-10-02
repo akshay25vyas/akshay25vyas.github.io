@@ -1,0 +1,1203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Akshay Vyas</title>
+<meta name="description" content="Akshay Vyas is a PhD candidate in Computer Science at UT Dallas working on evaluation of machine learning systems and learned inference with formal guarantees. First author at NeurIPS 2026 (Spotlight) and AAAI 2026. On the 2026–27 job market.">
+<meta name="author" content="Akshay Vyas">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://akshay25vyas.github.io/">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Akshay Vyas">
+<meta property="og:title" content="Akshay Vyas, PhD candidate in Computer Science at UT Dallas">
+<meta property="og:description" content="Evaluation of machine learning systems and learned inference with guarantees. First author at NeurIPS 2026 (Spotlight) and AAAI 2026. On the 2026–27 job market.">
+<meta property="og:url" content="https://akshay25vyas.github.io/">
+<meta property="og:image" content="https://akshay25vyas.github.io/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Akshay Vyas, PhD candidate in Computer Science at UT Dallas. NeurIPS 2026 Spotlight, AAAI 2026 and NeurIPS 2024.">
+<meta property="profile:first_name" content="Akshay">
+<meta property="profile:last_name" content="Vyas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Akshay Vyas, PhD candidate at UT Dallas">
+<meta name="twitter:description" content="Evaluation of machine learning systems and learned inference with guarantees. NeurIPS 2026 Spotlight and AAAI 2026.">
+<meta name="twitter:image" content="https://akshay25vyas.github.io/og-card.png">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F7FA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C111C" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="newsreader-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<!--PAGE-START-->
+<style>
+/* Layout: a scholar's homepage. A profile column on the left keeps the photo, links and job-market status in view while the right column reads like a short research statement followed by the record: news, papers with their figures, research, experience. Left-aligned throughout. */
+:root {
+  --paper: #F5F7FA;        /* cool proof-paper ground */
+  --surface: #FFFFFF;      /* cards, figures, instruments */
+  --ink: #111A2E;          /* text, deep navy ink */
+  --ink-2: #46516A;        /* secondary text */
+  --ink-3: #5E6880;        /* dates, captions, axis labels */
+  --rule: #DDE2EA;         /* hairlines */
+  --rule-strong: #C9D0DC;  /* control borders, baselines */
+  --accent: #2645C4;       /* indigo: links, emphasis text, primary button */
+  --mark: #2F50D8;         /* indigo: chart marks and valid bounds */
+  --wash: #E7ECFD;         /* pale indigo wash */
+  --award: #7A4A00;        /* spotlight badge text */
+  --award-wash: #FCEFD3;   /* spotlight badge ground */
+  --bad: #C23A2F;          /* a bound below the optimum */
+  --bad-wash: rgba(194, 58, 47, 0.07);
+  --mark-muted: #A3ABBA;   /* de-emphasized marks */
+  --backdrop: rgba(8, 12, 22, 0.72);
+  --shadow: 0 1px 2px rgba(17, 26, 46, 0.06), 0 10px 30px rgba(17, 26, 46, 0.07);
+  --f-display: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --f-ui: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-code: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C111C; --surface: #131A28; --ink: #E8ECF4; --ink-2: #B0B9CB; --ink-3: #8E99AE;
+    --rule: #253047; --rule-strong: #34405A; --accent: #9AB0FF; --mark: #6A86F7; --wash: #1A2546;
+    --award: #F2C46D; --award-wash: #3A2C12;
+    --bad: #E8594E; --bad-wash: rgba(232, 89, 78, 0.10); --mark-muted: #56617A;
+    --backdrop: rgba(0, 0, 0, 0.78);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 30px rgba(0, 0, 0, 0.30);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C111C; --surface: #131A28; --ink: #E8ECF4; --ink-2: #B0B9CB; --ink-3: #8E99AE;
+  --rule: #253047; --rule-strong: #34405A; --accent: #9AB0FF; --mark: #6A86F7; --wash: #1A2546;
+  --award: #F2C46D; --award-wash: #3A2C12;
+  --bad: #E8594E; --bad-wash: rgba(232, 89, 78, 0.10); --mark-muted: #56617A;
+  --backdrop: rgba(0, 0, 0, 0.78);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 30px rgba(0, 0, 0, 0.30);
+  color-scheme: dark;
+}
+
+@font-face { font-family: "Newsreader"; src: url("newsreader-latin-var.woff2") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("newsreader-latin-var-italic.woff2") format("woff2"); font-weight: 200 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("ibm-plex-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("ibm-plex-sans-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("ibm-plex-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("ibm-plex-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-ui);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--accent); text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--mark); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3, h4 { text-wrap: balance; }
+p { text-wrap: pretty; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+
+.skip { position: absolute; left: -9999px; top: 8px; z-index: 60; background: var(--ink); color: var(--paper); padding: 10px 14px; border-radius: 8px; }
+.skip:focus { left: 16px; }
+
+/* Phone bar */
+.mbar { display: none; }
+@media (max-width: 979px) {
+  .mbar { display: flex; align-items: center; gap: 14px; position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); border-bottom: 1px solid var(--rule); padding: 0 clamp(16px, 4vw, 48px); min-height: 52px; }
+  .mbar-name { flex: none; font-family: var(--f-display); font-weight: 600; font-size: 1.0625rem; color: var(--ink); text-decoration: none; }
+  .mbar-nav { display: flex; gap: 16px; overflow-x: auto; scrollbar-width: none; min-width: 0; padding-block: 14px; padding-right: 24px; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); }
+  .mbar-nav::-webkit-scrollbar { display: none; }
+  .mbar-nav a { flex: none; color: var(--ink-2); text-decoration: none; font-size: .875rem; font-weight: 500; }
+  .mbar-nav a:hover { color: var(--ink); }
+}
+
+/* Shell */
+.shell { max-width: 1240px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 48px); display: grid; grid-template-columns: 17rem minmax(0, 1fr); gap: clamp(40px, 5vw, 88px); }
+@media (max-width: 979px) { .shell { grid-template-columns: minmax(0, 1fr); gap: 0; } }
+
+/* Profile column */
+.profile { min-width: 0; padding-block: 48px; }
+.profile-inner { display: grid; gap: 20px; }
+@media (min-width: 980px) and (min-height: 820px) {
+  .profile-inner { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 40px); }
+}
+.id { display: grid; gap: 16px; }
+.avatar { position: relative; width: 9.5rem; aspect-ratio: 1; max-width: 100%; border-radius: 50%; overflow: hidden; background: var(--wash); display: grid; place-items: center; box-shadow: 0 0 0 1px var(--rule); }
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.monogram { font-family: var(--f-display); font-size: 3.25rem; font-weight: 500; color: var(--accent); letter-spacing: -0.02em; }
+.name { font-family: var(--f-display); font-weight: 500; font-size: 2.35rem; line-height: 1.02; letter-spacing: -0.015em; margin: 0; }
+.role { margin: 8px 0 0; color: var(--ink-2); font-size: .9375rem; line-height: 1.45; }
+.advisors { margin: 0; font-size: .9375rem; color: var(--ink-2); line-height: 1.5; }
+.market { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 16px; box-shadow: var(--shadow); }
+.market-head { display: flex; align-items: center; gap: 9px; margin: 0; font-weight: 600; font-size: .9375rem; }
+.status-dot { flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--mark); box-shadow: 0 0 0 4px var(--wash); }
+.market-text { margin: 8px 0 0; font-size: .875rem; color: var(--ink-2); line-height: 1.5; }
+.market-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 500 .875rem/1 var(--f-ui); padding: 10px 14px; border-radius: 10px; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink); text-decoration: none; cursor: pointer; }
+.btn:hover { border-color: var(--ink-3); text-decoration: none; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.btn-primary:hover { border-color: var(--accent); filter: brightness(1.08); }
+.links { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.links a { display: inline-flex; align-items: center; gap: 10px; padding-block: 5px; color: var(--ink); text-decoration: none; font-size: .9375rem; font-weight: 500; }
+.links a:hover { color: var(--accent); }
+.links svg { width: 18px; height: 18px; flex: none; color: var(--ink-3); }
+.links a:hover svg { color: var(--accent); }
+.toc { display: grid; gap: 2px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.toc a { color: var(--ink-3); text-decoration: none; font-size: .875rem; font-weight: 500; padding: 3px 0 3px 12px; border-left: 2px solid transparent; }
+.toc a:hover { color: var(--ink); }
+.toc a[aria-current="true"] { color: var(--ink); border-left-color: var(--mark); }
+@media (max-width: 979px) {
+  .profile { padding-block: 28px 8px; }
+  .id { grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 18px; }
+  .avatar { width: 5.75rem; }
+  .monogram { font-size: 2rem; }
+  .name { font-size: 2.1rem; }
+  .toc { display: none; }
+  .links { grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); }
+}
+
+/* Main column */
+.content { min-width: 0; max-width: 47rem; padding-bottom: 24px; }
+.sec { padding-block: clamp(40px, 6vw, 68px); border-top: 1px solid var(--rule); scroll-margin-top: 24px; }
+.sec-first { border-top: 0; padding-top: 48px; }
+@media (max-width: 979px) { .sec { scroll-margin-top: 64px; } .sec-first { padding-top: 20px; } }
+.sec h2 { font-family: var(--f-display); font-weight: 500; font-size: 1.95rem; line-height: 1.15; margin: 0 0 24px; }
+.sub-h { font-family: var(--f-display); font-weight: 600; font-size: 1.3rem; margin: 40px 0 12px; }
+.thesis { font-family: var(--f-display); font-weight: 400; font-size: clamp(1.75rem, 3.4vw, 2.5rem); line-height: 1.15; letter-spacing: -0.01em; margin: 0; max-width: 22ch; }
+.prose p { font-family: var(--f-display); font-size: 1.1875rem; line-height: 1.62; margin: 0; max-width: 40rem; }
+.prose p + p { margin-top: 14px; }
+.bio { margin-top: 22px; }
+.highlights { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; margin: 30px 0 0; border-top: 1px solid var(--rule); }
+.highlights > div { padding-block: 12px; border-bottom: 1px solid var(--rule); }
+.highlights dt { font-weight: 600; }
+.highlights dd { margin: 2px 0 0; color: var(--ink-2); font-size: .9375rem; }
+@media (max-width: 560px) { .highlights { grid-template-columns: minmax(0, 1fr); } }
+
+/* News */
+.news { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.news li { display: grid; grid-template-columns: 5.25rem minmax(0, 1fr); gap: 16px; }
+.news time { color: var(--ink-3); font-size: .875rem; font-weight: 500; font-variant-numeric: tabular-nums; padding-top: 2px; white-space: nowrap; }
+.news p { margin: 0; }
+.news b { font-weight: 600; }
+
+/* Publications */
+.sec-note { margin: -10px 0 18px; color: var(--ink-2); font-size: .9375rem; }
+.pubs { display: grid; }
+.pub { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 24px; padding-block: 26px; border-top: 1px solid var(--rule); }
+.pub:first-child { border-top: 0; padding-top: 4px; }
+.pub-fig { display: block; width: 100%; aspect-ratio: 16 / 10; padding: 0; margin: 0; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; background: var(--surface); cursor: zoom-in; align-self: start; }
+.pub-fig img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .25s ease; }
+button.pub-fig:hover img { transform: scale(1.03); }
+.pub-fig.static { cursor: default; display: grid; place-items: center; }
+.pub-body { min-width: 0; }
+.pub-venue { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0; }
+.venue { font-weight: 600; font-size: .9375rem; }
+.badge { font-size: .75rem; font-weight: 600; line-height: 1; padding: 5px 9px; border-radius: 999px; background: var(--wash); color: var(--accent); white-space: nowrap; }
+.badge.award { background: var(--award-wash); color: var(--award); }
+.badge.quiet { background: transparent; color: var(--ink-3); padding: 0; font-weight: 500; }
+.pub-title { font-family: var(--f-display); font-size: 1.3rem; line-height: 1.28; font-weight: 600; margin: 8px 0 0; }
+.pub-authors { margin: 6px 0 0; font-size: .875rem; color: var(--ink-2); line-height: 1.5; }
+.pub-authors b { color: var(--ink); font-weight: 600; }
+.pub-tldr { margin: 8px 0 0; font-family: var(--f-display); font-size: 1.0625rem; line-height: 1.5; color: var(--ink-2); }
+.pub-rate { margin: 8px 0 0; font-size: .8125rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.pub-links { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px; margin-top: 12px; }
+.pill { display: inline-flex; align-items: center; font: 500 .8125rem/1 var(--f-ui); padding: 7px 12px; border-radius: 999px; border: 1px solid var(--rule-strong); color: var(--ink); background: var(--surface); text-decoration: none; cursor: pointer; }
+.pill:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+.pill[aria-expanded="true"] { background: var(--wash); border-color: var(--accent); color: var(--accent); }
+.more-box { margin-top: 12px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; }
+.more-box p { margin: 0; font-size: .9375rem; line-height: 1.6; color: var(--ink-2); }
+.more-box pre { margin: 0; overflow-x: auto; font: 400 .78rem/1.55 var(--f-code); color: var(--ink); }
+.more-box .btn-small { margin-top: 10px; }
+.btn-small { font: 500 .8125rem/1 var(--f-ui); padding: 8px 12px; border-radius: 999px; border: 0; background: var(--wash); color: var(--accent); cursor: pointer; white-space: nowrap; }
+.btn-small:hover { background: var(--accent); color: var(--paper); }
+@media (max-width: 640px) {
+  .pub { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .pub-fig { max-width: 26rem; }
+}
+.pubs-compact { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.pubs-compact li { display: grid; gap: 2px; }
+.pc-title { font-family: var(--f-display); font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
+.pc-meta { font-size: .875rem; color: var(--ink-2); }
+.pc-meta b { color: var(--ink); font-weight: 600; }
+.fineprint { margin: 28px 0 0; font-size: .8125rem; color: var(--ink-3); }
+
+/* L2B schematic */
+.tree { width: 100%; height: 100%; }
+.tree .edge { stroke: var(--ink-3); stroke-width: 1.5; }
+.tree .edge.hot { stroke: var(--mark); stroke-width: 2.5; }
+.tree .edge.cut { stroke: var(--mark-muted); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.tree .node { fill: var(--surface); stroke: var(--ink-3); stroke-width: 1.5; }
+.tree .node.hot { stroke: var(--mark); stroke-width: 2.5; }
+.tree .node.cut { stroke: var(--mark-muted); }
+.tree text { font-family: var(--f-ui); font-size: 11px; font-weight: 600; fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+.tree .cutlabel { fill: var(--ink-3); font-weight: 500; }
+.tree .note { fill: var(--ink-3); font-weight: 500; font-size: 10px; }
+
+/* Research */
+.lead-in { font-family: var(--f-display); font-size: clamp(1.3rem, 2.2vw, 1.5rem); line-height: 1.42; margin: 0 0 36px; max-width: 40rem; }
+.thread { display: grid; gap: 18px; }
+.thread + .thread { margin-top: 56px; padding-top: 44px; border-top: 1px dashed var(--rule-strong); }
+.thread h3 { font-family: var(--f-display); font-size: clamp(1.45rem, 2.3vw, 1.7rem); font-weight: 600; margin: 0; }
+.thread-links { display: flex; flex-wrap: wrap; gap: 8px 20px; font-weight: 500; font-size: .9375rem; }
+.result { display: grid; gap: 6px; }
+.result-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.result h4 { font-family: var(--f-display); font-size: 1.25rem; font-weight: 600; margin: 0; }
+
+/* Metric chart */
+.chart { position: relative; margin: 6px 0; padding: 20px 20px 16px; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; }
+.chart-title { display: block; font-weight: 600; font-size: 1rem; line-height: 1.35; }
+.chart-sub { display: block; margin-top: 4px; font-size: .875rem; color: var(--ink-2); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 14px 0 6px; font-size: .8125rem; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.sw { width: 14px; height: 8px; border-radius: 3px; background: var(--mark); }
+.sw.muted { background: var(--mark-muted); }
+.ranges { display: grid; }
+.rng, .rng-axis { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr) 4.25rem; align-items: center; column-gap: 14px; }
+.rng { min-height: 44px; cursor: default; border-radius: 6px; }
+.rng:hover .rng-bar, .rng:focus-visible .rng-bar { filter: brightness(1.12); }
+.rng-label { font-size: .875rem; line-height: 1.3; min-width: 0; }
+.rng-label b { font-weight: 600; display: block; }
+.rng-label span { color: var(--ink-3); font-size: .8125rem; }
+.rng-track { position: relative; align-self: stretch; min-height: 44px; border-left: 1px solid var(--rule-strong); background-image: linear-gradient(to right, var(--rule) 0 1px, transparent 1px); background-size: calc(100% * 10 / 35) 100%; background-repeat: repeat-x; }
+.rng-bar { position: absolute; top: 50%; height: 10px; margin-top: -5px; left: calc(var(--lo) / 35 * 100%); width: calc((var(--hi) - var(--lo)) / 35 * 100%); min-width: 6px; border-radius: 5px; background: var(--mark); box-shadow: 0 0 0 2px var(--surface); }
+.rng-bar.base { border-radius: 0 4px 4px 0; background: var(--mark-muted); }
+.rng-val { font-size: .875rem; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rng-axis .ticks { position: relative; height: 22px; font-size: .75rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.rng-axis .ticks span { position: absolute; top: 4px; transform: translateX(-50%); }
+.rng-axis .ticks span:first-child { transform: none; }
+.axis-title { margin: 2px 0 0; font-size: .8125rem; color: var(--ink-3); }
+@media (max-width: 640px) {
+  .rng, .rng-axis { grid-template-columns: minmax(0, 1fr) 3.75rem; grid-template-areas: "label label" "track val"; row-gap: 4px; }
+  .rng { padding-top: 10px; }
+  .rng-label { grid-area: label; }
+  .rng-track { grid-area: track; min-height: 28px; }
+  .rng-val { grid-area: val; }
+  .rng-axis > :first-child { display: none; }
+  .rng-axis .ticks { grid-area: track; }
+  .rng-axis > :last-child { grid-area: val; }
+}
+.tableview { margin-top: 14px; }
+.tableview summary, .how summary { cursor: pointer; list-style: none; font-weight: 500; font-size: .875rem; color: var(--accent); }
+.tableview summary::-webkit-details-marker, .how summary::-webkit-details-marker { display: none; }
+.tableview summary::before, .how summary::before { content: "+"; display: inline-block; width: 1.1em; font-weight: 600; }
+.tableview[open] summary::before, .how[open] summary::before { content: "\2212"; }
+.table-wrap { overflow-x: auto; margin-top: 10px; }
+.tableview table { border-collapse: collapse; width: 100%; font-size: .875rem; min-width: 26rem; }
+.tableview th, .tableview td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.tableview th { font-weight: 600; color: var(--ink-2); }
+.tableview td:last-child { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.fig-source { margin: 12px 0 0; font-size: .8125rem; color: var(--ink-3); }
+
+/* Bound simulation */
+.instrument { position: relative; min-width: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 22px 22px 18px; box-shadow: var(--shadow); }
+.inst-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 12px; }
+.instrument h4 { font-family: var(--f-display); font-weight: 600; font-size: 1.35rem; margin: 0; }
+.tag { font-size: .75rem; font-weight: 500; color: var(--accent); background: var(--wash); border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
+.inst-text { margin: 10px 0 0; font-size: .9375rem; color: var(--ink-2); }
+.strip { display: grid; gap: 14px; margin-top: 18px; }
+.strip-row { display: grid; gap: 6px; }
+.strip-meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 10px; font-size: .8125rem; }
+.strip-name { font-weight: 600; }
+.strip-count { color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.strip-count b { color: var(--ink); font-weight: 600; }
+.track { position: relative; height: 54px; border-radius: 8px; background: linear-gradient(to right, var(--bad-wash) 0 40%, transparent 40%); box-shadow: inset 0 0 0 1px var(--rule); touch-action: pan-y; }
+.track::before { content: ""; position: absolute; left: 40%; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--ink); }
+.dot { position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--mark); box-shadow: 0 0 0 2px var(--surface); }
+.dot.bad { background: var(--surface); border: 2px solid var(--bad); }
+.dot.new { animation: pop .5s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes pop { from { transform: scale(.2); opacity: 0; } to { transform: none; opacity: 1; } }
+.strip-axis { position: relative; height: 16px; margin-top: -4px; font-size: .75rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.strip-axis span { position: absolute; top: 0; transform: translateX(-50%); }
+.strip-axis span:first-child { transform: none; }
+.strip-key { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 10px 0 0; font-size: .8125rem; color: var(--ink-2); }
+.strip-key span { display: inline-flex; align-items: center; gap: 7px; }
+.key-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--mark); }
+.key-ring { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--bad); }
+.key-line { width: 2px; height: 12px; background: var(--ink); }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 16px; }
+.btn:disabled { opacity: .5; cursor: default; }
+.how { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--rule); }
+.how-body { display: grid; gap: 12px; margin-top: 12px; font-size: .875rem; color: var(--ink-2); }
+.how-body p { margin: 0; }
+.diagram { width: 100%; max-width: 330px; height: auto; color: var(--ink-2); }
+.diagram .node { fill: var(--surface); stroke: var(--rule-strong); stroke-width: 1.25; }
+.diagram .edge { stroke: var(--ink-3); stroke-width: 1.25; }
+.diagram .edge-hot { stroke: var(--mark); stroke-width: 2; }
+.diagram text { fill: var(--ink); font-family: var(--f-ui); font-size: 12px; }
+.diagram .lab { fill: var(--ink-3); }
+.diagram .hot { fill: var(--accent); font-weight: 600; }
+.math { font-family: var(--f-display); font-style: italic; font-size: 1.05em; white-space: nowrap; color: var(--ink); }
+.tip { position: absolute; z-index: 5; pointer-events: none; background: var(--ink); color: var(--paper); font-size: .8125rem; line-height: 1.4; padding: 8px 10px; border-radius: 8px; width: max-content; max-width: 15rem; box-shadow: var(--shadow); transform: translate(-50%, calc(-100% - 12px)); }
+.tip strong { display: block; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* Experience */
+.timeline { list-style: none; margin: 0; padding: 0; }
+.tl { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 22px; padding-block: 20px; border-top: 1px solid var(--rule); }
+.tl:first-child { border-top: 0; padding-top: 0; }
+.tl-when { font-size: .875rem; color: var(--ink-3); font-weight: 500; font-variant-numeric: tabular-nums; padding-top: 3px; }
+.tl-what { min-width: 0; }
+.tl h3 { font-family: var(--f-display); font-size: 1.25rem; font-weight: 600; margin: 0; }
+.tl-org { margin: 2px 0 0; font-weight: 500; color: var(--ink-2); }
+.tl-what p:not(.tl-org) { margin: 8px 0 0; color: var(--ink-2); }
+@media (max-width: 640px) { .tl { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+
+/* Skills and background */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 44px; }
+.skills h3 { font-family: var(--f-display); font-size: 1.25rem; font-weight: 600; margin: 0 0 6px; }
+.skills p { margin: 0; color: var(--ink-2); }
+.skills .tools { margin-top: 8px; font-size: .875rem; color: var(--ink-3); line-height: 1.6; }
+@media (max-width: 640px) { .skills { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+.bg { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 44px; }
+.bg h3 { font-family: var(--f-ui); font-size: .9375rem; font-weight: 600; margin: 0 0 8px; }
+.bg ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.bg li { color: var(--ink-2); font-size: .9375rem; line-height: 1.5; }
+.bg li b { display: block; color: var(--ink); font-weight: 600; }
+@media (max-width: 640px) { .bg { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+
+/* Contact */
+.contact-line { font-family: var(--f-display); font-size: clamp(1.55rem, 3vw, 2.1rem); line-height: 1.2; margin: 0; max-width: 26ch; }
+.contact-text { margin: 14px 0 0; color: var(--ink-2); max-width: 36rem; }
+.reach { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 20px; }
+.email { display: inline-flex; align-items: center; gap: 10px; padding: 5px 5px 5px 14px; border: 1px solid var(--rule-strong); border-radius: 999px; background: var(--surface); max-width: 100%; }
+.email-text { font-weight: 500; font-size: .9375rem; -webkit-user-select: all; user-select: all; overflow-wrap: anywhere; }
+.reach-links { display: flex; flex-wrap: wrap; gap: 8px 20px; font-weight: 500; font-size: .9375rem; }
+.foot { padding-block: 26px 44px; border-top: 1px solid var(--rule); color: var(--ink-3); font-size: .8125rem; }
+
+/* Figure viewer */
+.lightbox { border: 0; padding: 0; background: transparent; width: min(1120px, 94vw); max-width: 94vw; max-height: 94vh; color: var(--ink); }
+.lightbox::backdrop { background: var(--backdrop); }
+.lb-box { position: relative; background: var(--surface); border-radius: 14px; padding: 16px 16px 14px; box-shadow: var(--shadow); }
+.lb-box img { display: block; width: 100%; height: auto; max-height: 70vh; object-fit: contain; background: #FFFFFF; border-radius: 8px; }
+.lb-cap { margin: 12px 44px 0 2px; font-size: .9375rem; color: var(--ink-2); line-height: 1.5; }
+.lb-close { position: absolute; right: 12px; bottom: 10px; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink); font: 500 1.1rem/1 var(--f-ui); cursor: pointer; }
+.lb-close:hover { border-color: var(--ink-3); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+@media print {
+  .mbar, .toc, .market-actions, .controls, .skip, .lightbox { display: none !important; }
+  .profile-inner { position: static !important; }
+  .shell { display: block; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="mbar" aria-label="Sections">
+  <a class="mbar-name" href="#about">Akshay Vyas</a>
+  <nav class="mbar-nav" aria-label="Sections">
+    <a href="#news">News</a>
+    <a href="#publications">Papers</a>
+    <a href="#research">Research</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="profile" aria-label="Profile">
+    <div class="profile-inner">
+      <div class="id">
+        <div class="avatar">
+          <span class="monogram" aria-hidden="true">AV</span>
+          <img src="photo.jpg" alt="Akshay Vyas" width="400" height="400" data-photo hidden>
+        </div>
+        <div>
+          <h1 class="name">Akshay Vyas</h1>
+          <p class="role">PhD Candidate in Computer Science<br>The University of Texas at Dallas</p>
+        </div>
+      </div>
+      <p class="advisors">Advised by <a href="https://personal.utdallas.edu/~nicholas.ruozzi/" target="_blank" rel="noopener">Nicholas Ruozzi</a> and <a href="https://personal.utdallas.edu/~vibhav.gogate/" target="_blank" rel="noopener">Vibhav Gogate</a></p>
+      <div class="market">
+        <p class="market-head"><span class="status-dot" aria-hidden="true"></span>On the 2026–27 job market</p>
+        <p class="market-text">Looking for research scientist, research engineer and faculty roles starting in summer 2027.</p>
+        <div class="market-actions">
+          <a class="btn btn-primary" href="#contact" data-mailto>Email me</a>
+          <a class="btn" href="Akshay_Vyas_CV.pdf" target="_blank" rel="noopener" data-cv hidden>Download CV</a>
+        </div>
+      </div>
+      <ul class="links">
+        <li><a href="#contact" data-mailto><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>Email</a></li>
+        <li><a href="https://scholar.google.com/citations?user=12mWgAcAAAAJ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.5 12 5l10 4.5L12 14 2 9.5Z"/><path d="M6.5 11.5v4.2c1.5 1.4 3.4 2.1 5.5 2.1s4-.7 5.5-2.1v-4.2"/></svg>Google Scholar</a></li>
+        <li><a href="https://github.com/akshay25vyas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8.5 8-4 4 4 4"/><path d="m15.5 8 4 4-4 4"/><path d="m13.5 5.5-3 13"/></svg>GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/vyas-akshay/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></svg>LinkedIn</a></li>
+        <li data-cv hidden><a href="Akshay_Vyas_CV.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>CV (PDF)</a></li>
+      </ul>
+      <nav class="toc" aria-label="On this page">
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#background">Background</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main id="main" class="content">
+
+    <section id="about" class="sec sec-first" aria-label="About">
+      <p class="thesis">I build ways to measure and certify what machine learning systems do.</p>
+      <div class="prose bio">
+        <p>I'm a PhD candidate in Computer Science at The University of Texas at Dallas, advised by Nicholas Ruozzi and Vibhav Gogate, graduating in May 2027. I work on two connected problems: evaluation that tracks what people actually notice, and learned inference that keeps formal guarantees.</p>
+        <p>In my first-author AAAI 2026 paper, we showed that pixel and n-gram metrics barely move when models are trained to respect task invariants, while most Fréchet distances on learned features improve. I'm now comparing what human raters notice with what automatic judges notice, from metrics to LLM judges and reward models. My first-author NeurIPS 2026 Spotlight introduced Neural Dual Bounds, to our knowledge the first learned MAP bound predictor that is valid by construction for any network output.</p>
+        <p>Before the PhD I spent nearly three years building production systems at Swiggy, Goldman Sachs and Microsoft, and I bring that engineering to research. I integrated a neural bound predictor into a C++ branch-and-bound solver that queries it at every search node with millisecond latency, and I built perception components for an AR assistant that our team demonstrated at MIT under DARPA's Perceptually-enabled Task Guidance program.</p>
+      </div>
+      <dl class="highlights">
+        <div><dt>NeurIPS 2026</dt><dd>Spotlight, first author</dd></div>
+        <div><dt>AAAI 2026</dt><dd>First author, 17.6% acceptance</dd></div>
+        <div><dt>NeurIPS 2024</dt><dd>Datasets and Benchmarks, co-author</dd></div>
+        <div><dt>Industry</dt><dd>Nearly 3 years at Swiggy, Goldman Sachs and Microsoft</dd></div>
+      </dl>
+    </section>
+
+    <section id="news" class="sec" aria-labelledby="h-news">
+      <h2 id="h-news">News</h2>
+      <ol class="news">
+        <li><time datetime="2026-10">Oct 2026</time><p>I'm on the job market for research scientist, research engineer and faculty positions starting in 2027.</p></li>
+        <li><time datetime="2026-09">Sep 2026</time><p><b>Neural Dual Bounds</b> was accepted at NeurIPS 2026 as a Spotlight.</p></li>
+        <li><time datetime="2025-11">Nov 2025</time><p>Our paper on evaluating evaluation metrics was accepted at AAAI 2026.</p></li>
+        <li><time datetime="2024-09">Sep 2024</time><p><b>CaptainCook4D</b> was accepted at the NeurIPS 2024 Datasets and Benchmarks track.</p></li>
+        <li><time datetime="2023">2023</time><p>Demonstrated our AR task-guidance system at MIT for DARPA's Perceptually-enabled Task Guidance program.</p></li>
+        <li><time datetime="2023-01">Jan 2023</time><p>Started my PhD in Computer Science at UT Dallas.</p></li>
+      </ol>
+    </section>
+
+    <section id="publications" class="sec" aria-labelledby="h-pubs">
+      <h2 id="h-pubs">Publications</h2>
+      <p class="sec-note">Select a figure to enlarge it.</p>
+      <div class="pubs">
+
+        <article class="pub" id="neural-dual-bounds">
+          <button type="button" class="pub-fig" data-full="ndb-convergence-full.png" data-caption="JGLP convergence from zero initialization (blue) and from the neural warm start (red) on BN_12, grid20×20.f10 and Segmentation_14. The star marks the bound from a single forward pass, about 0.04 ms. Both runs approach the same optimum, D*." aria-label="Enlarge the Neural Dual Bounds convergence figure">
+            <img src="ndb-thumb.png" alt="Convergence plot: the neurally warm-started JGLP bound (red) drops to the optimum far sooner than the zero-initialized bound (blue)." width="640" height="400">
+          </button>
+          <div class="pub-body">
+            <p class="pub-venue"><span class="venue">NeurIPS 2026</span><span class="badge award">Spotlight</span><span class="badge">First author</span></p>
+            <h3 class="pub-title">Neural Dual Bounds: Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP</h3>
+            <p class="pub-authors"><b>Akshay Vyas</b>, Shivvrat Arya, Brij Malhotra, Tahrima Rahman, Vibhav Gogate, Nicholas Ruozzi</p>
+            <p class="pub-tldr">A network that outputs antisymmetric edge messages, so every prediction is a valid upper bound on the MAP value whatever the weights. Its warm starts tighten JGLP by up to six orders of magnitude within 100 iterations.</p>
+            <p class="pub-rate">NeurIPS 2026 main track: 25.7% acceptance (7,900 of 30,709 submissions).</p>
+            <div class="pub-links">
+              <button type="button" class="pill" aria-expanded="false" aria-controls="neural-dual-bounds-bibtex">BibTeX</button>
+            </div>
+            <div class="more-box" id="neural-dual-bounds-bibtex" hidden><pre id="bib-ndb">@inproceedings{vyas2026neural,
+  title     = {Neural Dual Bounds: Valid-by-Construction {JGLP}
+               Warm-Starts for {MAP} and Constrained {MAP}},
+  author    = {Vyas, Akshay and Arya, Shivvrat and Malhotra, Brij
+               and Rahman, Tahrima and Gogate, Vibhav
+               and Ruozzi, Nicholas},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2026}
+}</pre><button type="button" class="btn-small" data-copy-from="bib-ndb">Copy BibTeX</button></div>
+          </div>
+        </article>
+
+        <article class="pub" id="evaluating-metrics">
+          <button type="button" class="pub-fig" data-full="aaai-colorization-full.jpg" data-caption="Invariant-based regularization in image colorization. Left: ground truth, ChromaGAN trained with a segmentation invariant, and the ChromaGAN baseline, with their segmentation masks below. Right: the same comparison for ColorFormer with a depth invariant. The regularized models keep object boundaries and depth cues that the baselines lose." aria-label="Enlarge the colorization figure">
+            <img src="aaai-thumb.jpg" alt="Colorized ladybug images with their segmentation masks: the model trained with a segmentation invariant keeps the beetle's boundary, while the baseline lets green bleed into it." width="640" height="400">
+          </button>
+          <div class="pub-body">
+            <p class="pub-venue"><span class="venue">AAAI 2026</span><span class="badge">First author</span></p>
+            <h3 class="pub-title">A Novel Approach to Evaluating Evaluation Metrics for Multi-Output Structured Prediction</h3>
+            <p class="pub-authors"><b>Akshay Vyas</b>, Angelo Pimienta, Nicholas Ruozzi</p>
+            <p class="pub-tldr">Uses approximate task invariants to test which evaluation metrics register the difference between models trained with and without them, across colorization, translation and captioning.</p>
+            <p class="pub-rate">AAAI 2026: 17.6% acceptance (4,167 of 23,680 submissions).</p>
+            <div class="pub-links">
+              <a class="pill" href="https://ojs.aaai.org/index.php/AAAI/article/view/39808" target="_blank" rel="noopener">Paper</a>
+              <a class="pill" href="https://github.com/akshay25vyas/invariants-metric-eval" target="_blank" rel="noopener">Code</a>
+              <button type="button" class="pill" aria-expanded="false" aria-controls="evaluating-metrics-abstract">Abstract</button>
+              <button type="button" class="pill" aria-expanded="false" aria-controls="evaluating-metrics-bibtex">BibTeX</button>
+            </div>
+            <div class="more-box" id="evaluating-metrics-abstract" hidden><p>In multi-output structured prediction tasks, while only one ground truth label may be provided in the training data, multiple equally valid outputs may be possible, making reliable evaluation a persistent challenge. We postulate that human evaluators implicitly use task-specific invariants, e.g., object boundaries in colorized images or named entities in translations, to judge if an output is acceptable. Under this assumption, we introduce a notion of approximate task-specific invariants and use them as diagnostic tools to evaluate a variety of existing metrics for vision and language tasks. We use these task invariants as part of a framework to systematically test metric reliability by encouraging domain-relevant invariants in model outputs via an augmented loss function. In our experiments, we observe that enforcing invariants with an augmented loss yields substantial improvements in popular distributional metrics while more traditional metrics change only marginally. Through this invariants-driven evaluation, we expose where standard metrics fail to detect meaningful differences, and we highlight the conditions under which distributional metrics succeed or still fall short.</p></div>
+            <div class="more-box" id="evaluating-metrics-bibtex" hidden><pre id="bib-aaai">@inproceedings{vyas2026novel,
+  title     = {A Novel Approach to Evaluating Evaluation Metrics
+               for Multi-Output Structured Prediction},
+  author    = {Vyas, Akshay and Pimienta, Angelo
+               and Ruozzi, Nicholas},
+  booktitle = {Proceedings of the AAAI Conference
+               on Artificial Intelligence},
+  volume    = {40},
+  number    = {31},
+  pages     = {26062--26071},
+  year      = {2026},
+  doi       = {10.1609/aaai.v40i31.39808}
+}</pre><button type="button" class="btn-small" data-copy-from="bib-aaai">Copy BibTeX</button></div>
+          </div>
+        </article>
+
+        <article class="pub" id="learning-to-bound">
+          <div class="pub-fig static">
+            <svg class="tree" viewBox="0 0 240 150" role="img" aria-label="Schematic of branch-and-bound search: the learned bound never rises along a path, and a branch whose bound falls below the best solution found so far is pruned.">
+              <line class="edge hot" x1="120" y1="26" x2="72" y2="70"/>
+              <line class="edge cut" x1="120" y1="26" x2="172" y2="70"/>
+              <line class="edge hot" x1="72" y1="70" x2="44" y2="116"/>
+              <line class="edge" x1="72" y1="70" x2="104" y2="116"/>
+              <circle class="node hot" cx="120" cy="26" r="15"/><text x="120" y="26">8.9</text>
+              <circle class="node hot" cx="72" cy="70" r="15"/><text x="72" y="70">8.1</text>
+              <circle class="node cut" cx="172" cy="70" r="15"/><text class="cutlabel" x="172" y="70">7.2</text>
+              <circle class="node hot" cx="44" cy="116" r="15"/><text x="44" y="116">7.6</text>
+              <circle class="node" cx="104" cy="116" r="15"/><text x="104" y="116">7.9</text>
+              <text class="note" x="172" y="98">pruned</text>
+              <text class="note" x="200" y="132">best found 7.4</text>
+            </svg>
+          </div>
+          <div class="pub-body">
+            <p class="pub-venue"><span class="venue">Under review</span><span class="badge">First author</span></p>
+            <h3 class="pub-title">Learning to Bound: Monotonic, Calibrated Neural Upper Bounds for MPE Inference</h3>
+            <p class="pub-authors"><b>Akshay Vyas</b>, Hailiang Dong, Shivvrat Arya, Brij Malhotra, Tahrima Rahman, Vibhav Gogate, Nicholas Ruozzi</p>
+            <p class="pub-tldr">Neural bounds that are monotone by construction and calibrated with finite-sample coverage, used as heuristics inside AND/OR branch-and-bound. On Bayesian networks they are 5 to 10 times tighter than mini-bucket bounds at i-bound 4 and arrive in milliseconds.</p>
+          </div>
+        </article>
+
+        <article class="pub" id="captaincook4d">
+          <button type="button" class="pub-fig" data-full="captaincook4d-timeline.jpg" data-caption="CaptainCook4D annotation overview: a recipe's steps aligned with video frames, and the errors a participant made, such as a spill, a substituted ingredient or a missed step." aria-label="Enlarge the CaptainCook4D annotation figure">
+            <img src="captaincook4d-thumb.jpg" alt="Recipe steps aligned with egocentric video frames, with annotated errors such as a spill and a substituted ingredient." width="640" height="400">
+          </button>
+          <div class="pub-body">
+            <p class="pub-venue"><span class="venue">NeurIPS 2024</span><span class="badge quiet">Datasets and Benchmarks track</span></p>
+            <h3 class="pub-title">CaptainCook4D: A Dataset for Understanding Errors in Procedural Activities</h3>
+            <p class="pub-authors">Rohith Peddi, Shivvrat Arya, Bharath Challa, Likhitha Pallapothula, <b>Akshay Vyas</b>, Bhavya Gouripeddi, Qifan Zhang, Jikai Wang, Vasundhara Komaragiri, Eric Ragan, Nicholas Ruozzi, Yu Xiang, Vibhav Gogate</p>
+            <p class="pub-tldr">384 egocentric recordings (94.5 hours) of people cooking from recipes, some following the steps and some deliberately making errors, benchmarked for error recognition, multi-step localization and procedure learning.</p>
+            <p class="pub-rate">NeurIPS 2024 Datasets and Benchmarks: 25.3% acceptance (460 of 1,820 submissions).</p>
+            <div class="pub-links">
+              <a class="pill" href="https://proceedings.neurips.cc/paper_files/paper/2024/file/f4a04396c2ed1342a5d8d05e94cb6101-Paper-Datasets_and_Benchmarks_Track.pdf" target="_blank" rel="noopener">Paper</a>
+              <a class="pill" href="https://arxiv.org/abs/2312.14556" target="_blank" rel="noopener">arXiv</a>
+              <a class="pill" href="https://captaincook4d.github.io/captain-cook/" target="_blank" rel="noopener">Project</a>
+              <a class="pill" href="https://github.com/CaptainCook4D/annotations" target="_blank" rel="noopener">Annotations</a>
+              <button type="button" class="pill" aria-expanded="false" aria-controls="captaincook4d-abstract">Abstract</button>
+              <button type="button" class="pill" aria-expanded="false" aria-controls="captaincook4d-bibtex">BibTeX</button>
+            </div>
+            <div class="more-box" id="captaincook4d-abstract" hidden><p>Following step-by-step procedures is an essential component of various activities carried out by individuals in their daily lives. These procedures serve as a guiding framework that helps to achieve goals efficiently, whether it is assembling furniture or preparing a recipe. However, the complexity and duration of procedural activities inherently increase the likelihood of making errors. Understanding such procedural activities from a sequence of frames is a challenging task that demands an accurate interpretation of visual information and the ability to reason about the structure of the activity. To this end, we collect a new egocentric 4D dataset CaptainCook4D comprising 384 recordings (94.5 hours) of people performing recipes in real kitchen environments. This dataset consists of two distinct types of activities: one in which participants adhere to the provided recipe instructions and another in which they deviate and induce errors. We provide 5.3K step annotations and 10K fine-grained action annotations and benchmark the dataset for the following tasks: error recognition, multi-step localization and procedure learning.</p></div>
+            <div class="more-box" id="captaincook4d-bibtex" hidden><pre id="bib-cc4d">@inproceedings{peddi2024captaincook4d,
+  title     = {{CaptainCook4D}: A Dataset for Understanding Errors
+               in Procedural Activities},
+  author    = {Peddi, Rohith and Arya, Shivvrat and Challa, Bharath
+               and Pallapothula, Likhitha and Vyas, Akshay
+               and Gouripeddi, Bhavya and Zhang, Qifan and Wang, Jikai
+               and Komaragiri, Vasundhara and Ragan, Eric
+               and Ruozzi, Nicholas and Xiang, Yu and Gogate, Vibhav},
+  booktitle = {Advances in Neural Information Processing Systems,
+               Datasets and Benchmarks Track},
+  volume    = {37},
+  pages     = {135626--135679},
+  year      = {2024}
+}</pre><button type="button" class="btn-small" data-copy-from="bib-cc4d">Copy BibTeX</button></div>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="sub-h">Workshop papers and other work</h3>
+      <ul class="pubs-compact">
+        <li>
+          <span class="pc-title">Predictive Task Guidance with Artificial Intelligence in Augmented Reality</span>
+          <span class="pc-meta">B. Rheault, S. Arya, <b>A. Vyas</b>, J. Wang, R. Peddi, B. Benda, V. Gogate, N. Ruozzi, Y. Xiang, E. D. Ragan. IEEE VR 2024 Abstracts and Workshops. <a href="https://www.cise.ufl.edu/~eragan/papers/Rheault_VR2024.pdf" target="_blank" rel="noopener">PDF</a></span>
+        </li>
+        <li>
+          <span class="pc-title">Put on Your Detective Hat: What's Wrong in This Video?</span>
+          <span class="pc-meta">R. Peddi, S. Arya, B. Challa, L. Pallapothula, <b>A. Vyas</b>, Q. Zhang, J. Wang, et al. DMLR Workshop at ICML 2023.</span>
+        </li>
+        <li>
+          <span class="pc-title">Camera Model Identification Based on Local Co-Occurrence Features</span>
+          <span class="pc-meta">P. Parkhiya, N. Reddy, <b>A. Vyas</b>, V. Jain, D. Srivastava, V. Lalitha. IEEE Signal Processing Cup 2018.</span>
+        </li>
+      </ul>
+      <p class="fineprint">Acceptance rates: NeurIPS 2026 and AAAI 2026 from <a href="https://openaccept.org/c/ai/neurips/2026/" target="_blank" rel="noopener">OpenAccept</a> and <a href="https://openaccept.org/c/ai/aaai/2026/" target="_blank" rel="noopener">OpenAccept</a>. NeurIPS 2024 Datasets and Benchmarks from the <a href="https://media.neurips.cc/Conferences/NeurIPS2024/NeurIPS2024-Fact_Sheet.pdf" target="_blank" rel="noopener">NeurIPS 2024 fact sheet</a>.</p>
+    </section>
+
+    <section id="research" class="sec" aria-labelledby="h-research">
+      <h2 id="h-research">Research</h2>
+      <p class="lead-in">Two questions run through my work. How do we know an output is good when many outputs are acceptable and a metric sees only one reference? And how do we make learned shortcuts for inference safe enough to run inside exact solvers?</p>
+
+      <article class="thread" aria-labelledby="t-eval">
+        <h3 id="t-eval">Evaluation that tracks what people notice</h3>
+        <div class="prose">
+          <p>Colorization, translation and captioning each admit many acceptable outputs, yet most metrics score against a single reference. In our AAAI 2026 paper we used approximate task invariants, such as object boundaries, depth, named entities and scene-graph relations, as probes. We retrained seven published models across three tasks with and without invariant losses computed by frozen networks, so no new labels were needed, and measured which metrics register the difference.</p>
+        </div>
+
+        <figure class="chart" id="fig-metrics">
+          <figcaption>
+            <span class="chart-title">Most Fréchet distances on learned features improved. PSNR, BLEU-4 and METEOR barely moved.</span>
+            <span class="chart-sub">Best validation improvement over the same model trained without invariants, as a range across models and invariant losses.</span>
+          </figcaption>
+          <div class="legend"><span><i class="sw" aria-hidden="true"></i>Fréchet distances on learned features</span><span><i class="sw muted" aria-hidden="true"></i>Pixel and n-gram metrics</span></div>
+          <div class="ranges">
+            <div class="rng" tabindex="0" data-value="3% to 33% better" data-detail="Fréchet distance on DINOv2 features. Colorization with ChromaGAN, ColorFormer and DDColor, trained with segmentation and depth invariants.">
+              <div class="rng-label"><b>FDD</b><span>DINOv2 features, colorization</span></div>
+              <div class="rng-track"><span class="rng-bar" style="--lo:3; --hi:33"></span></div>
+              <div class="rng-val">3–33%</div>
+            </div>
+            <div class="rng" tabindex="0" data-value="7% to 16% better" data-detail="Fréchet distance on Inception features. Same colorization models and invariants.">
+              <div class="rng-label"><b>FID</b><span>Inception features, colorization</span></div>
+              <div class="rng-track"><span class="rng-bar" style="--lo:7; --hi:16"></span></div>
+              <div class="rng-val">7–16%</div>
+            </div>
+            <div class="rng" tabindex="0" data-value="13% to 15% better" data-detail="Fréchet BERT distance. German to English translation with Bi-SimCut and BiBERT, trained with named-entity and sentiment invariants.">
+              <div class="rng-label"><b>FBD</b><span>BERT features, translation</span></div>
+              <div class="rng-track"><span class="rng-bar" style="--lo:13; --hi:15"></span></div>
+              <div class="rng-val">13–15%</div>
+            </div>
+            <div class="rng" tabindex="0" data-value="5% to 13% better" data-detail="Fréchet BERT distance over the last four layers. Captioning with SmallCap and ClipCap, trained with named-entity and scene-graph invariants.">
+              <div class="rng-label"><b>FBD-4</b><span>BERT features, captioning</span></div>
+              <div class="rng-track"><span class="rng-bar" style="--lo:5; --hi:13"></span></div>
+              <div class="rng-val">5–13%</div>
+            </div>
+            <div class="rng" tabindex="0" data-value="Under 2% better" data-detail="Peak signal-to-noise ratio. Same colorization models and invariants.">
+              <div class="rng-label"><b>PSNR</b><span>pixels, colorization</span></div>
+              <div class="rng-track"><span class="rng-bar base" style="--lo:0; --hi:2"></span></div>
+              <div class="rng-val">&lt; 2%</div>
+            </div>
+            <div class="rng" tabindex="0" data-value="Under 1% better" data-detail="n-gram overlap metrics. Same translation models and invariants.">
+              <div class="rng-label"><b>BLEU-4, METEOR</b><span>n-grams, translation</span></div>
+              <div class="rng-track"><span class="rng-bar base" style="--lo:0; --hi:1"></span></div>
+              <div class="rng-val">&lt; 1%</div>
+            </div>
+            <div class="rng-axis" aria-hidden="true">
+              <div></div>
+              <div class="ticks"><span style="left:0%">0%</span><span style="left:28.571%">10%</span><span style="left:57.143%">20%</span><span style="left:85.714%">30%</span></div>
+              <div></div>
+            </div>
+          </div>
+          <p class="axis-title">Improvement when models are trained to respect task invariants</p>
+          <details class="tableview">
+            <summary>Show the values as a table</summary>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th scope="col">Task</th><th scope="col">Metric</th><th scope="col">Improvement</th></tr></thead>
+                <tbody>
+                  <tr><td>Colorization</td><td>FDD (DINOv2 features)</td><td>3–33%</td></tr>
+                  <tr><td>Colorization</td><td>FID (Inception features)</td><td>7–16%</td></tr>
+                  <tr><td>Colorization</td><td>LPIPS</td><td>4–7%</td></tr>
+                  <tr><td>Colorization</td><td>PSNR</td><td>under 2%</td></tr>
+                  <tr><td>Translation</td><td>FBD</td><td>13–15%</td></tr>
+                  <tr><td>Translation</td><td>FBD-4</td><td>2–5%</td></tr>
+                  <tr><td>Translation</td><td>BLEU-4, METEOR, BERTScore</td><td>under 1%</td></tr>
+                  <tr><td>Captioning</td><td>FBD-4</td><td>5–13%</td></tr>
+                  <tr><td>Captioning</td><td>BLEU-4, METEOR, CIDEr</td><td>within ±1%</td></tr>
+                  <tr><td>Captioning</td><td>FBD, BERTScore</td><td>essentially unchanged</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="fig-source">The paper also reports CMMD, Colorfulness and COMET. See its Figure 2.</p>
+          </details>
+          <p class="fig-source">Source: Vyas, Pimienta and Ruozzi, AAAI 2026.</p>
+          <div class="tip" id="fig-tip" role="status" hidden></div>
+        </figure>
+
+        <div class="prose">
+          <p>Most Fréchet distances on learned features improved, by as much as 33%, while PSNR, BLEU-4 and METEOR moved by less than 2%. The results suggest building metrics on richer encoders, such as DINOv2 rather than Inception.</p>
+        </div>
+        <div class="thread-links">
+          <a href="https://ojs.aaai.org/index.php/AAAI/article/view/39808" target="_blank" rel="noopener">Read the AAAI 2026 paper</a>
+          <a href="https://github.com/akshay25vyas/invariants-metric-eval" target="_blank" rel="noopener">Code on GitHub</a>
+        </div>
+      </article>
+
+      <article class="thread" aria-labelledby="t-bounds">
+        <h3 id="t-bounds">Learned inference with guarantees</h3>
+        <div class="prose">
+          <p>Exact solvers such as branch-and-bound query an upper bound at every node of the search. Classical bounds are always correct but slow to tighten. Learned predictors are fast, yet one bound that comes in too low can prune away the optimal solution.</p>
+        </div>
+
+        <div class="instrument" id="instrument">
+          <div class="inst-head">
+            <h4 id="inst-title">Valid by construction</h4>
+            <span class="tag">Simulation of the NeurIPS 2026 idea</span>
+          </div>
+          <p class="inst-text">Each dot is a simulated prediction for the same small graphical model, made with the same amount of error. Predicted as antisymmetric messages, every result is still an upper bound on the true optimum. Predicted as raw piece tables, some results fall below the optimum and stop being bounds.</p>
+          <div class="strip" id="strip">
+            <div class="strip-row">
+              <div class="strip-meta"><span class="strip-name">Antisymmetric messages</span><span class="strip-count" id="count-anti"><b>24</b> of 24 valid</span></div>
+              <div class="track" id="track-anti" tabindex="0" aria-label="Predictions made as antisymmetric messages"></div>
+            </div>
+            <div class="strip-row">
+              <div class="strip-meta"><span class="strip-name">Unconstrained tables</span><span class="strip-count" id="count-free"><b>17</b> of 24 valid</span></div>
+              <div class="track" id="track-free" tabindex="0" aria-label="Predictions made as unconstrained tables"></div>
+            </div>
+            <div class="strip-axis" aria-hidden="true"><span style="left:0%">−1</span><span style="left:20%">−0.5</span><span style="left:40%">0</span><span style="left:60%">+0.5</span><span style="left:80%">+1</span></div>
+          </div>
+          <div class="strip-key">
+            <span><i class="key-line" aria-hidden="true"></i>True optimum</span>
+            <span><i class="key-dot" aria-hidden="true"></i>Valid upper bound</span>
+            <span><i class="key-ring" aria-hidden="true"></i>Below the optimum</span>
+          </div>
+          <div class="controls">
+            <button type="button" class="btn btn-primary" id="draw-more">Draw 25 more</button>
+            <button type="button" class="btn" id="draw-reset">Reset</button>
+          </div>
+          <details class="how">
+            <summary>How it works</summary>
+            <div class="how-body">
+              <svg class="diagram" viewBox="0 0 330 176" role="img" aria-label="Three pieces A, B and C each share one variable with each neighbor. A message on the shared variable x2 is added to piece A and subtracted from piece B.">
+                <line class="edge-hot" x1="114" y1="34" x2="216" y2="34"/>
+                <line class="edge" x1="64" y1="54" x2="140" y2="122"/>
+                <line class="edge" x1="266" y1="54" x2="190" y2="122"/>
+                <rect class="node" x="10" y="14" width="104" height="40" rx="9"/>
+                <rect class="node" x="216" y="14" width="104" height="40" rx="9"/>
+                <rect class="node" x="113" y="122" width="104" height="40" rx="9"/>
+                <text x="62" y="39" text-anchor="middle">A (x₁, x₂)</text>
+                <text x="268" y="39" text-anchor="middle">B (x₂, x₃)</text>
+                <text x="165" y="147" text-anchor="middle">C (x₁, x₃)</text>
+                <text class="lab" x="165" y="26" text-anchor="middle">x₂</text>
+                <text class="hot" x="122" y="52">+λ</text>
+                <text class="hot" x="208" y="52" text-anchor="end">−λ</text>
+                <text class="lab" x="90" y="98" text-anchor="end">x₁</text>
+                <text class="lab" x="240" y="98">x₃</text>
+              </svg>
+              <p>The model has three binary variables split into three overlapping pieces. A message <span class="math">λ</span> on a shared variable is added to one piece and subtracted from its neighbor, so every complete assignment keeps its total score. Maximizing each piece on its own can only overshoot, which makes the sum of piece maxima, <span class="math">D(λ)</span>, an upper bound on the optimum for any <span class="math">λ</span> the network outputs.</p>
+              <p>Coordinate descent on the same messages closes this model's gap from 1.2 to 0 in three updates. Every prediction above is the optimal solution plus Gaussian noise with standard deviation 0.25 on each output.</p>
+            </div>
+          </details>
+          <div class="tip" id="inst-tip" role="status" hidden></div>
+        </div>
+
+        <div class="result">
+          <div class="result-head"><h4>Neural Dual Bounds</h4><span class="badge award">NeurIPS 2026 Spotlight</span></div>
+          <div class="prose"><p>The network outputs antisymmetric edge messages on a join graph, so every output, whether trained, untrained or adversarial, yields a valid upper bound on the MAP value. For MAP it trains self-supervised against a smooth dual objective, with no LP solver and no optimal labels. On UAI benchmark models its warm starts cut JGLP's dual gap by up to six orders of magnitude within 100 iterations, and test-time adaptation extends the method to MAP under multiple constraints.</p></div>
+        </div>
+        <div class="result">
+          <div class="result-head"><h4>Learning to Bound</h4><span class="badge quiet">Under review</span></div>
+          <div class="prose"><p>A network that is monotone by construction, combined with stratified conformal calibration, gives fast heuristics for AND/OR branch-and-bound. On Bayesian networks its bounds are 5 to 10 times tighter than mini-bucket bounds at i-bound 4 and arrive in milliseconds. Along search paths it records zero ordering violations, where an unconstrained network inverts roughly one step in four.</p></div>
+        </div>
+      </article>
+
+      <article class="thread" aria-labelledby="t-percept">
+        <h3 id="t-percept">Perception for AR task guidance</h3>
+        <div class="prose">
+          <p>Under DARPA's Perceptually-enabled Task Guidance program, I built perception components for an augmented-reality cooking assistant. I wrote training, inference and data-retrieval scripts for our Detectron2 kitchen-object detector, then moved to open-set detection with Grounding DINO, class refinement with CLIP and PROTO-CLIP, and real-time segmentation with SAM and MobileSAM.</p>
+          <p>I led 3D spatial mapping for object localization in AR, and built co-localization that fuses HoloLens 2 depth with SIFT matching in a real-time ROS pipeline, with logic that verifies the depth measurements. Our team demonstrated the system at MIT in 2023.</p>
+          <p>I also helped build CaptainCook4D, collecting and annotating egocentric recordings and testing baseline models for error recognition.</p>
+        </div>
+        <div class="thread-links">
+          <a href="https://captaincook4d.github.io/captain-cook/" target="_blank" rel="noopener">CaptainCook4D project page</a>
+          <a href="https://www.cise.ufl.edu/~eragan/papers/Rheault_VR2024.pdf" target="_blank" rel="noopener">IEEE VR 2024 paper</a>
+        </div>
+      </article>
+    </section>
+
+    <section id="experience" class="sec" aria-labelledby="h-experience">
+      <h2 id="h-experience">Experience</h2>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="tl-when">2023–present</div>
+          <div class="tl-what">
+            <h3>Graduate Research Assistant</h3>
+            <p class="tl-org">The University of Texas at Dallas</p>
+            <p>Research on evaluation and on inference with guarantees with Nicholas Ruozzi and Vibhav Gogate, supported by NSF grant 2327245. Built perception components for DARPA's Perceptually-enabled Task Guidance program, demonstrated at MIT in 2023.</p>
+          </div>
+        </li>
+        <li class="tl">
+          <div class="tl-when">Summer 2022</div>
+          <div class="tl-what">
+            <h3>Software Development Engineer Intern</h3>
+            <p class="tl-org">Goldman Sachs, Dallas</p>
+            <p>Built an OCR pipeline that turns PDF financial tables into structured data for a banker-facing portal, and shipped its review dashboard in React with AG Grid.</p>
+          </div>
+        </li>
+        <li class="tl">
+          <div class="tl-when">2019–2021</div>
+          <div class="tl-what">
+            <h3>Software Development Engineer</h3>
+            <p class="tl-org">Swiggy, Bengaluru</p>
+            <p>Owned the architecture of the ingress service that relays customer orders into cloud kitchens, on the live order path of one of India's largest food delivery platforms. Tested it at service level by containerizing its external dependencies, and shipped a fraud-detection API for delivery executives using OTP confirmation and location signals. MVP award, Kitchen Intelligence and Optimization team, 2021, given to under 3% of engineers per cycle.</p>
+          </div>
+        </li>
+        <li class="tl">
+          <div class="tl-when">Summer 2018</div>
+          <div class="tl-what">
+            <h3>Software Development Engineer Intern</h3>
+            <p class="tl-org">Microsoft, Bing Places, Hyderabad</p>
+            <p>Trained a spam-business classifier over Bing's local and global data pipelines, with engineered and de-biased features.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="skills" class="sec" aria-labelledby="h-skills">
+      <h2 id="h-skills">Skills</h2>
+      <div class="skills">
+        <div>
+          <h3>Evaluation and human studies</h3>
+          <p>Human evaluation studies and the statistics to read them, plus the tooling, including a web platform for human raters.</p>
+          <p class="tools">LLM and VLM judges, reward models, learned and n-gram metrics such as COMET, BLEU, CIDEr, FID and FDD, inter-annotator agreement, mixed-effects models, bootstrap and permutation tests</p>
+        </div>
+        <div>
+          <h3>Learned methods with guarantees</h3>
+          <p>Learned bounds that stay valid for every network output, networks that are monotone by construction so search heuristics stay consistent, and conformal calibration with finite-sample coverage.</p>
+          <p class="tools">Probabilistic graphical models, LP and Lagrangian duality, mini-bucket elimination and JGLP, AND/OR branch-and-bound, conformal prediction, amortized and variational inference, CVXPY with Clarabel, DAOOPT</p>
+        </div>
+        <div>
+          <h3>Research code at systems speed</h3>
+          <p>A neural bound predictor inside a C++ branch-and-bound solver, queried at every search node with millisecond latency across millions of nodes per search.</p>
+          <p class="tools">PyTorch, Hugging Face Transformers, scikit-learn, NumPy and SciPy, Detectron2, SAM and MobileSAM, Grounding DINO, CLIP, DINOv2, OpenCV, ROS</p>
+        </div>
+        <div>
+          <h3>Production engineering</h3>
+          <p>Nearly three years shipping production services, including the architecture of a live order-path service at Swiggy.</p>
+          <p class="tools">Python, C++, Java, Go, SQL, JavaScript, Kafka, Docker, AWS (Lambda, Step Functions, DynamoDB), Spring Boot, Flask, React, Linux</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="background" class="sec" aria-labelledby="h-background">
+      <h2 id="h-background">Background</h2>
+      <div class="bg">
+        <div>
+          <h3>Education</h3>
+          <ul>
+            <li><b>Ph.D., Computer Science</b>The University of Texas at Dallas, 2023–2027 (expected). GPA 3.95</li>
+            <li><b>M.S., Computer Science</b>The University of Texas at Dallas. GPA 4.0</li>
+            <li><b>B.Tech., Electronics and Communication Engineering</b>IIIT Hyderabad, 2015–2019</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Awards</h3>
+          <ul>
+            <li><b>Spotlight, NeurIPS 2026</b>Neural Dual Bounds</li>
+            <li><b>MVP award, Swiggy, 2021</b>Kitchen Intelligence and Optimization team, under 3% of engineers per cycle</li>
+            <li><b>Gold medal, men's singles table tennis</b>National inter-college sports festival, India. Sports captain at IIIT Hyderabad</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Teaching</h3>
+          <ul>
+            <li><b>Teaching assistant, UT Dallas</b>CS 6347 Statistical Methods in AI and ML, CS 4375 Introduction to Machine Learning, CS 6364 Artificial Intelligence, CS 4365 Introduction to Artificial Intelligence</li>
+            <li><b>Teaching assistant, IIIT Hyderabad</b>Electronic Workshop II</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Service</h3>
+          <ul>
+            <li><b>Reviewer</b>NeurIPS 2026</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="sec" aria-labelledby="h-contact">
+      <h2 id="h-contact">Contact</h2>
+      <p class="contact-line">Hiring for evaluation, reward models or inference with guarantees? I'd like to hear from you.</p>
+      <p class="contact-text">I'm looking for research scientist and research engineer roles, and for faculty positions, starting in summer 2027. I'm based in Dallas, Texas.</p>
+      <div class="reach">
+        <span class="email"><span class="email-text" data-email>akshayvyas227 [at] gmail [dot] com</span><button type="button" class="btn-small" data-copy-email>Copy email</button></span>
+        <span class="reach-links">
+          <a href="#contact" data-mailto>Send an email</a>
+          <a href="https://scholar.google.com/citations?user=12mWgAcAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://github.com/akshay25vyas" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/vyas-akshay/" target="_blank" rel="noopener">LinkedIn</a>
+        </span>
+      </div>
+    </section>
+
+    <footer class="foot">© 2026 Akshay Vyas, Dallas, Texas. Updated October 2026.</footer>
+  </main>
+</div>
+
+<dialog class="lightbox" id="lightbox" aria-label="Figure">
+  <div class="lb-box">
+    <img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <p class="lb-cap" id="lightbox-cap"></p>
+    <button type="button" class="lb-close" id="lightbox-close" aria-label="Close figure">×</button>
+  </div>
+</dialog>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Akshay Vyas",
+  "url": "https://akshay25vyas.github.io/",
+  "image": "https://akshay25vyas.github.io/og-card.png",
+  "jobTitle": "PhD Candidate, Computer Science",
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "The University of Texas at Dallas" },
+  "alumniOf": [{ "@type": "CollegeOrUniversity", "name": "IIIT Hyderabad" }, { "@type": "CollegeOrUniversity", "name": "The University of Texas at Dallas" }],
+  "knowsAbout": ["Evaluation metrics", "LLM judges", "Reward models", "Probabilistic graphical models", "MAP inference", "Branch-and-bound", "Conformal prediction"],
+  "sameAs": [
+    "https://scholar.google.com/citations?user=12mWgAcAAAAJ",
+    "https://github.com/akshay25vyas",
+    "https://www.linkedin.com/in/vyas-akshay/"
+  ]
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (s, el) { return (el || document).querySelector(s); };
+  var $$ = function (s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); };
+
+  /* Email: assembled here so the page source does not carry the address. */
+  var EMAIL = ["akshayvyas227", "gmail.com"].join("@");
+  $$("[data-email]").forEach(function (el) { el.textContent = EMAIL; });
+  $$("[data-mailto]").forEach(function (a) { a.setAttribute("href", "mailto:" + EMAIL); });
+
+  function flash(btn, text) {
+    if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+    btn.textContent = text;
+    clearTimeout(btn._t);
+    btn._t = setTimeout(function () { btn.textContent = btn.dataset.label; }, 1800);
+  }
+  function selectNode(node) {
+    try {
+      var r = document.createRange(); r.selectNodeContents(node);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    } catch (e) { /* selection unavailable */ }
+  }
+  function copy(text, btn, node) {
+    var fallback = function () { if (node) selectNode(node); flash(btn, "Selected"); };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { flash(btn, "Copied"); }, fallback);
+      } else { fallback(); }
+    } catch (e) { fallback(); }
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest(".pill[aria-controls]");
+    if (t) {
+      var panel = document.getElementById(t.getAttribute("aria-controls"));
+      if (panel) {
+        var open = t.getAttribute("aria-expanded") !== "true";
+        t.setAttribute("aria-expanded", String(open));
+        panel.hidden = !open;
+      }
+      return;
+    }
+    var b = e.target.closest("[data-copy-email]");
+    if (b) { copy(EMAIL, b, b.parentElement.querySelector("[data-email]")); return; }
+    var c = e.target.closest("[data-copy-from]");
+    if (c) { var node = document.getElementById(c.dataset.copyFrom); if (node) copy(node.textContent, c, node); }
+  });
+
+  /* Photo: shown once photo.jpg exists; the monogram stays otherwise. */
+  var photo = $("[data-photo]");
+  if (photo) {
+    var showPhoto = function () { if (photo.naturalWidth > 0) photo.hidden = false; };
+    if (photo.complete) showPhoto();
+    photo.addEventListener("load", showPhoto);
+  }
+
+  /* CV: the buttons appear once Akshay_Vyas_CV.pdf exists. */
+  var CV_URL = "Akshay_Vyas_CV.pdf";
+  try {
+    fetch(CV_URL, { method: "HEAD", cache: "no-store" }).then(function (r) {
+      var type = (r.headers.get("content-type") || "").toLowerCase();
+      if (r.ok && type.indexOf("pdf") !== -1) $$("[data-cv]").forEach(function (el) { el.hidden = false; });
+    }).catch(function () {});
+  } catch (e) { /* no fetch */ }
+
+  /* Section highlight in the side navigation. */
+  var tocLinks = $$(".toc a");
+  if ("IntersectionObserver" in window && tocLinks.length) {
+    var byId = {};
+    tocLinks.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
+    var visible = {};
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { visible[en.target.id] = en.isIntersecting ? en.intersectionRatio : 0; });
+      var best = null, bestR = 0;
+      Object.keys(visible).forEach(function (id) { if (visible[id] > bestR) { bestR = visible[id]; best = id; } });
+      if (best) tocLinks.forEach(function (a) { a.setAttribute("aria-current", String(a === byId[best])); });
+    }, { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.01, 0.25, 0.5] });
+    $$("main .sec").forEach(function (s) { if (byId[s.id]) io.observe(s); });
+  }
+
+  /* Figure viewer. */
+  var dlg = $("#lightbox"), dImg = $("#lightbox-img"), dCap = $("#lightbox-cap");
+  $$("[data-full]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var thumb = btn.querySelector("img");
+      dImg.src = btn.dataset.full;
+      dImg.alt = thumb ? thumb.alt : "";
+      dCap.textContent = btn.dataset.caption || "";
+      if (dlg && typeof dlg.showModal === "function") { dlg.showModal(); }
+      else { window.location.href = btn.dataset.full; }
+    });
+  });
+  if (dlg) {
+    $("#lightbox-close").addEventListener("click", function () { dlg.close(); });
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+  }
+
+  /* Shared tooltip placement, clamped inside its container. */
+  function placeTip(tip, box, x, y) {
+    tip.hidden = false;
+    var w = tip.offsetWidth, bw = box.clientWidth;
+    var half = w / 2, left = Math.max(half + 6, Math.min(bw - half - 6, x));
+    tip.style.left = left + "px";
+    tip.style.top = y + "px";
+  }
+
+  /* Metric chart tooltips. */
+  var fig = $("#fig-metrics"), figTip = $("#fig-tip");
+  $$(".rng", fig).forEach(function (row) {
+    var show = function () {
+      var strong = document.createElement("strong"); strong.textContent = row.dataset.value;
+      var span = document.createElement("span"); span.textContent = row.dataset.detail;
+      figTip.replaceChildren(strong, span);
+      var fr = fig.getBoundingClientRect(), br = row.querySelector(".rng-bar").getBoundingClientRect();
+      placeTip(figTip, fig, br.left + br.width / 2 - fr.left, br.top - fr.top);
+    };
+    var hide = function () { figTip.hidden = true; };
+    row.addEventListener("pointerenter", show);
+    row.addEventListener("pointerleave", hide);
+    row.addEventListener("focus", show);
+    row.addEventListener("blur", hide);
+  });
+
+  /* The bound simulation.
+     A 3-cycle of binary variables split into pieces A(x1,x2), B(x2,x3), C(x1,x3).
+     Antisymmetric messages on each shared variable are added to one piece and
+     subtracted from the other, so the sum of piece maxima never falls below MAP*. */
+  var A = [[2.0, 0.0], [0.5, 1.0]], B = [[0.2, 0.6], [1.8, 0.4]], C = [[0.3, 1.6], [0.9, 0.1]];
+  var MAP = -Infinity;
+  for (var a = 0; a < 2; a++) for (var b = 0; b < 2; b++) for (var c = 0; c < 2; c++) {
+    MAP = Math.max(MAP, A[a][b] + B[b][c] + C[a][c]);
+  }
+  function mx(t) { return Math.max(t[0][0], t[0][1], t[1][0], t[1][1]); }
+  function tables(m) {
+    var R = { A: [[0, 0], [0, 0]], B: [[0, 0], [0, 0]], C: [[0, 0], [0, 0]] };
+    for (var i = 0; i < 2; i++) for (var j = 0; j < 2; j++) {
+      R.A[i][j] = A[i][j] + m.ab[j] + m.ac[i];
+      R.B[i][j] = B[i][j] - m.ab[i] + m.bc[j];
+      R.C[i][j] = C[i][j] - m.ac[i] - m.bc[j];
+    }
+    return R;
+  }
+  function bound(R) { return mx(R.A) + mx(R.B) + mx(R.C); }
+  function solve() {
+    /* Block coordinate descent: equalize max-marginals across one edge at a time. */
+    var m = { ab: [0, 0], bc: [0, 0], ac: [0, 0] };
+    for (var it = 0; it < 90; it++) {
+      var R = tables(m), e = it % 3, ma, mb;
+      if (e === 0) {
+        ma = [0, 1].map(function (s) { return Math.max(R.A[0][s], R.A[1][s]) - m.ab[s]; });
+        mb = [0, 1].map(function (s) { return Math.max(R.B[s][0], R.B[s][1]) + m.ab[s]; });
+        m.ab = [0, 1].map(function (s) { return (mb[s] - ma[s]) / 2; });
+      } else if (e === 1) {
+        ma = [0, 1].map(function (s) { return Math.max(R.B[0][s], R.B[1][s]) - m.bc[s]; });
+        mb = [0, 1].map(function (s) { return Math.max(R.C[0][s], R.C[1][s]) + m.bc[s]; });
+        m.bc = [0, 1].map(function (s) { return (mb[s] - ma[s]) / 2; });
+      } else {
+        ma = [0, 1].map(function (s) { return Math.max(R.A[s][0], R.A[s][1]) - m.ac[s]; });
+        mb = [0, 1].map(function (s) { return Math.max(R.C[s][0], R.C[s][1]) + m.ac[s]; });
+        m.ac = [0, 1].map(function (s) { return (mb[s] - ma[s]) / 2; });
+      }
+    }
+    return m;
+  }
+  var mStar = solve(), Rstar = tables(mStar), SIGMA = 0.25, LO = -1, HI = 1.5, EPS = 1e-9;
+
+  function mulberry32(seed) {
+    return function () {
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  var rng, jit;
+  function gauss() { var u = 0; while (u === 0) u = rng(); var v = rng(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  function noisy(v) { return v + SIGMA * gauss(); }
+  function sampleAnti() {
+    var m = { ab: mStar.ab.map(noisy), bc: mStar.bc.map(noisy), ac: mStar.ac.map(noisy) };
+    return bound(tables(m)) - MAP;
+  }
+  function sampleFree() {
+    var total = 0;
+    ["A", "B", "C"].forEach(function (k) { total += mx(Rstar[k].map(function (row) { return row.map(noisy); })); });
+    return total - MAP;
+  }
+
+  var inst = $("#instrument"), instTip = $("#inst-tip");
+  var track = { anti: $("#track-anti"), free: $("#track-free") };
+  var counts = { anti: $("#count-anti"), free: $("#count-free") };
+  var state = { anti: [], free: [] };
+  var moreBtn = $("#draw-more"), MAX = 1000;
+
+  function pct(g) { return (Math.min(HI, Math.max(LO, g)) - LO) / (HI - LO) * 100; }
+  function addDot(kind, g, animate) {
+    var d = document.createElement("span");
+    d.className = "dot" + (g < -EPS ? " bad" : "") + (animate ? " new" : "");
+    var x = pct(g), y = 11 + jit() * 32;
+    d.style.left = x + "%"; d.style.top = y + "px";
+    track[kind].appendChild(d);
+    state[kind].push({ g: g, x: x, y: y });
+  }
+  function renderCount(kind) {
+    var n = state[kind].length, v = 0;
+    state[kind].forEach(function (p) { if (p.g >= -EPS) v++; });
+    var bEl = document.createElement("b"); bEl.textContent = String(v);
+    counts[kind].replaceChildren(bEl, document.createTextNode(" of " + n + " valid"));
+  }
+  function update() {
+    renderCount("anti"); renderCount("free");
+    moreBtn.disabled = state.anti.length >= MAX;
+  }
+  function draw(n, animate) {
+    for (var i = 0; i < n; i++) {
+      var ga = sampleAnti(), gf = sampleFree();
+      addDot("anti", ga, animate); addDot("free", gf, animate);
+    }
+    update();
+  }
+  function reset() {
+    rng = mulberry32(1729); jit = mulberry32(4242);
+    state.anti = []; state.free = [];
+    track.anti.replaceChildren(); track.free.replaceChildren();
+    instTip.hidden = true;
+    draw(24, false);
+  }
+  moreBtn.addEventListener("click", function () { draw(25, true); });
+  $("#draw-reset").addEventListener("click", reset);
+
+  function showDot(kind, p) {
+    var ir = inst.getBoundingClientRect(), r = track[kind].getBoundingClientRect();
+    var strong = document.createElement("strong");
+    strong.textContent = "Bound " + (MAP + p.g).toFixed(2);
+    var span = document.createElement("span");
+    span.textContent = p.g >= -EPS
+      ? p.g.toFixed(2) + " above the optimum of " + MAP.toFixed(2) + ", a valid bound"
+      : Math.abs(p.g).toFixed(2) + " below the optimum of " + MAP.toFixed(2) + ", so not a bound";
+    instTip.replaceChildren(strong, span);
+    placeTip(instTip, inst, r.left - ir.left + p.x / 100 * r.width, r.top - ir.top + p.y - 4);
+  }
+  function nearest(kind, px, py, w) {
+    var best = null, bd = Infinity;
+    state[kind].forEach(function (p) {
+      var dx = p.x / 100 * w - px, dy = p.y - py, d = dx * dx + dy * dy;
+      if (d < bd) { bd = d; best = p; }
+    });
+    return bd <= 18 * 18 ? best : null;
+  }
+  ["anti", "free"].forEach(function (kind) {
+    var tr = track[kind];
+    var probe = function (e) {
+      var r = tr.getBoundingClientRect();
+      var p = nearest(kind, e.clientX - r.left, e.clientY - r.top, r.width);
+      if (p) showDot(kind, p); else instTip.hidden = true;
+    };
+    tr.addEventListener("pointermove", probe);
+    tr.addEventListener("pointerdown", probe);
+    tr.addEventListener("pointerleave", function () { instTip.hidden = true; });
+    tr.addEventListener("focus", function () { var p = state[kind][state[kind].length - 1]; if (p) showDot(kind, p); });
+    tr.addEventListener("blur", function () { instTip.hidden = true; });
+  });
+
+  reset();
+})();
+</script>
+<!--PAGE-END-->
+</body>
+</html>
