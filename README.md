@@ -23,7 +23,7 @@ Everything sits at the top level, with no folders, so it can be uploaded in one 
 Both are optional and switch on by themselves once the file exists. Upload them to the top level of the repository with Add file, then Upload files.
 
 - **Photo:** a square headshot named exactly `photo.jpg`. Until then the site shows your initials.
-- **CV:** a PDF named exactly `Akshay_Vyas_CV.pdf`. The "Download CV" button and the "CV (PDF)" link then appear. Remove your phone number from the public copy first.
+- **CV:** a PDF named exactly `Akshay_Vyas_public_resume.pdf`. The "Download CV" button and the "CV (PDF)" link then appear. To update it, upload a new file with the same name; it replaces the old one. Keep the phone number off the public copy.
 
 ## Edit text later
 
