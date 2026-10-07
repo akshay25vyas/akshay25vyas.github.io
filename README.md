@@ -15,6 +15,7 @@ Everything sits at the top level, with no folders, so it can be uploaded in one 
 | `*-thumb.*`, `*-full.*`, `*-timeline.jpg` | Paper figures and their thumbnails |
 | `*.woff2` | Newsreader and IBM Plex Sans fonts (SIL Open Font License, see the LICENSE files) |
 | `og-card.png` | The preview image LinkedIn and other sites show when the link is shared |
+| `qr-website.*`, `qr-resume.*` | QR codes for the site and the resume (SVG shown on the page, PNG for download) |
 | `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Browser and phone icons |
 | `robots.txt`, `sitemap.xml` | Help search engines find the site |
 
@@ -24,6 +25,14 @@ Both are optional and switch on by themselves once the file exists. Upload them 
 
 - **Photo:** a square headshot named exactly `photo.jpg`. Until then the site shows your initials.
 - **CV:** a PDF named exactly `Akshay_Vyas_public_resume.pdf`. The "Download CV" button and the "CV (PDF)" link then appear. To update it, upload a new file with the same name; it replaces the old one. Keep the phone number off the public copy.
+
+## QR codes
+
+The "QR codes" link in the sidebar and in Contact opens a small card with two codes, one for https://akshay25vyas.github.io/ and one for the resume PDF. On a phone it shows one large code at a time, with a Website/Resume switch. Each code has "Copy link" and "Save image" buttons, and the PNGs are large enough to print on a poster.
+
+To open the card directly, go to https://akshay25vyas.github.io/#qr. Bookmark that on your phone for career fairs and poster sessions.
+
+The resume code points at `Akshay_Vyas_public_resume.pdf`. Keep that filename when you update the resume and the code keeps working. If the filename ever changes, regenerate `qr-resume.svg` and `qr-resume.png`.
 
 ## Edit text later
 

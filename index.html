@@ -380,12 +380,46 @@ button.pub-fig:hover img { transform: scale(1.03); }
 .lb-close { position: absolute; right: 12px; bottom: 10px; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink); font: 500 1.1rem/1 var(--f-ui); cursor: pointer; }
 .lb-close:hover { border-color: var(--ink-3); }
 
+/* QR codes: a pocket business card with scannable codes for the site and the resume. On phones a switch shows one large code at a time. */
+.qr-dialog { border: 0; padding: 0; background: transparent; color: var(--ink); width: min(35rem, calc(100vw - 24px)); max-width: none; max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); overflow: auto; }
+.qr-dialog::backdrop { background: var(--backdrop); }
+.qr-dialog[open] .qr-box { animation: qr-in .18s ease-out; }
+@keyframes qr-in { from { opacity: 0; transform: translateY(6px) scale(.985); } }
+.qr-box { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); }
+.qr-head { display: flex; align-items: center; gap: 12px; }
+.qr-head .avatar { width: 3.25rem; flex: none; }
+.qr-head .monogram { font-size: 1.2rem; }
+.qr-who { flex: 1; min-width: 0; }
+.qr-name { font-family: var(--f-display); font-weight: 500; font-size: 1.4rem; line-height: 1.1; margin: 0; }
+.qr-role { margin: 3px 0 0; color: var(--ink-2); font-size: .8125rem; line-height: 1.4; }
+.qr-close { position: static; flex: none; align-self: flex-start; }
+.qr-switch { display: none; }
+.qr-grid { display: flex; justify-content: center; gap: 14px; margin-top: 16px; }
+.qr-card { flex: 1 1 0; min-width: 0; max-width: 16rem; margin: 0; display: grid; justify-items: center; align-content: start; gap: 10px; padding: 14px 12px 12px; border: 1px solid var(--rule); border-radius: 14px; background: var(--paper); text-align: center; }
+.qr-img { display: block; width: 100%; max-width: 13.5rem; height: auto; aspect-ratio: 1; border-radius: 10px; background: #FFFFFF; }
+.qr-card figcaption { display: grid; gap: 1px; }
+.qr-card figcaption b { font-weight: 600; font-size: .9375rem; }
+.qr-sub { color: var(--ink-3); font-size: .8125rem; }
+.qr-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.qr-actions .btn-small { display: inline-flex; align-items: center; text-decoration: none; }
+.qr-hint { margin: 14px 0 0; color: var(--ink-3); font-size: .8125rem; text-align: center; }
+@media (max-width: 559px) {
+  .qr-box { padding: 16px; }
+  .qr-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 16px; padding: 4px; border: 1px solid var(--rule); border-radius: 999px; background: var(--paper); }
+  .qr-switch button { font: 500 .875rem/1 var(--f-ui); padding: 9px 10px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2); cursor: pointer; }
+  .qr-switch button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 0 0 1px var(--rule-strong); }
+  .qr-grid { margin-top: 12px; }
+  .qr-card { max-width: none; padding: 16px 14px 14px; }
+  .qr-img { max-width: 18rem; }
+  .qr-grid[data-show="site"] > [data-card="cv"], .qr-grid[data-show="cv"] > [data-card="site"] { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 @media print {
-  .mbar, .toc, .market-actions, .controls, .skip, .lightbox { display: none !important; }
+  .mbar, .toc, .market-actions, .controls, .skip, .lightbox, .qr-dialog { display: none !important; }
   .profile-inner { position: static !important; }
   .shell { display: block; }
 }
@@ -418,7 +452,7 @@ button.pub-fig:hover img { transform: scale(1.03); }
           <p class="role">PhD Candidate in Computer Science<br>The University of Texas at Dallas</p>
         </div>
       </div>
-      <p class="advisors">Advised by <a href="https://personal.utdallas.edu/~nicholas.ruozzi/" target="_blank" rel="noopener">Nicholas Ruozzi</a>. I also work closely with <a href="https://personal.utdallas.edu/~vibhav.gogate/" target="_blank" rel="noopener">Vibhav Gogate</a>.</p>
+      <p class="advisors">Advised by Prof.&nbsp;<a href="https://personal.utdallas.edu/~nicholas.ruozzi/" target="_blank" rel="noopener">Nicholas&nbsp;Ruozzi</a>. I also work closely with Prof.&nbsp;<a href="https://personal.utdallas.edu/~vibhav.gogate/" target="_blank" rel="noopener">Vibhav&nbsp;Gogate</a>.</p>
       <div class="market">
         <p class="market-head"><span class="status-dot" aria-hidden="true"></span>On the 2026–27 job market</p>
         <p class="market-text">PhD expected May 2027. Looking for full-time research scientist and research engineer roles from May 2027, and research internships from January 2027. Also applying for faculty positions. Open to relocation.</p>
@@ -433,6 +467,7 @@ button.pub-fig:hover img { transform: scale(1.03); }
         <li><a href="https://github.com/akshay25vyas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8.5 8-4 4 4 4"/><path d="m15.5 8 4 4-4 4"/><path d="m13.5 5.5-3 13"/></svg>GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/vyas-akshay/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></svg>LinkedIn</a></li>
         <li data-cv hidden><a href="Akshay_Vyas_public_resume.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>CV (PDF)</a></li>
+        <li><a href="#qr" data-qr-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1.2"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1.2"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1.2"/><path d="M14 14h2.5M20.5 14v.01M14 17.5v3M17.5 20.5h3v-3"/></svg>QR codes</a></li>
       </ul>
       <nav class="toc" aria-label="On this page">
         <a href="#about">About</a>
@@ -452,7 +487,7 @@ button.pub-fig:hover img { transform: scale(1.03); }
     <section id="about" class="sec sec-first" aria-label="About">
       <p class="thesis">I build ways to measure and certify what machine learning systems do.</p>
       <div class="prose bio">
-        <p>I'm a PhD candidate in Computer Science at The University of Texas at Dallas, advised by Nicholas Ruozzi and working closely with Vibhav Gogate, graduating in May 2027. I work on two connected problems: evaluation that tracks what people actually notice, and learned inference that keeps formal guarantees.</p>
+        <p>I'm a PhD candidate in Computer Science at The University of Texas at Dallas, graduating in May 2027. I'm fortunate to be advised by Professor Nicholas&nbsp;Ruozzi and to work closely with Professor Vibhav&nbsp;Gogate. My research focuses on two connected problems: evaluation that tracks what people actually notice, and learned inference that keeps formal guarantees.</p>
         <p>In my first-author AAAI 2026 paper, we showed that pixel and n-gram metrics barely move when models are trained to respect task invariants, while most Fréchet distances on learned features improve. I'm now comparing what human raters notice with what automatic judges notice, from metrics to LLM judges and reward models. My first-author NeurIPS 2026 Spotlight introduced Neural Dual Bounds, to our knowledge the first learned MAP bound predictor that is valid by construction for any network output.</p>
         <p>Before the PhD I spent nearly three years building production systems at Swiggy, Goldman Sachs and Microsoft, and I bring that engineering to research. I integrated a neural bound predictor into a C++ branch-and-bound solver that queries it at every search node with millisecond latency, and I built perception components for an AR assistant that our team demonstrated at MIT under DARPA's Perceptually-enabled Task Guidance program.</p>
       </div>
@@ -796,7 +831,7 @@ button.pub-fig:hover img { transform: scale(1.03); }
           <div class="tl-what">
             <h3>Graduate Research Assistant</h3>
             <p class="tl-org">The University of Texas at Dallas</p>
-            <p>Research on evaluation and on inference with guarantees, advised by Nicholas Ruozzi and in close collaboration with Vibhav Gogate, supported by NSF grant 2327245. Built perception components for DARPA's Perceptually-enabled Task Guidance program, demonstrated at MIT in 2023.</p>
+            <p>Research on evaluation and on inference with guarantees, advised by Professor Nicholas&nbsp;Ruozzi and in close collaboration with Professor Vibhav&nbsp;Gogate, supported by NSF grant 2327245. Built perception components for DARPA's Perceptually-enabled Task Guidance program, demonstrated at MIT in 2023.</p>
           </div>
         </li>
         <li class="tl">
@@ -898,6 +933,7 @@ button.pub-fig:hover img { transform: scale(1.03); }
           <a href="https://scholar.google.com/citations?user=12mWgAcAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
           <a href="https://github.com/akshay25vyas" target="_blank" rel="noopener">GitHub</a>
           <a href="https://www.linkedin.com/in/vyas-akshay/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#qr" data-qr-open>QR codes</a>
         </span>
       </div>
     </section>
@@ -911,6 +947,45 @@ button.pub-fig:hover img { transform: scale(1.03); }
     <img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
     <p class="lb-cap" id="lightbox-cap"></p>
     <button type="button" class="lb-close" id="lightbox-close" aria-label="Close figure">×</button>
+  </div>
+</dialog>
+
+<dialog class="qr-dialog" id="qr" aria-label="QR codes for the website and resume">
+  <div class="qr-box">
+    <div class="qr-head">
+      <div class="avatar" aria-hidden="true">
+        <span class="monogram">AV</span>
+        <img src="photo.jpg" alt="" width="400" height="400" data-photo hidden>
+      </div>
+      <div class="qr-who">
+        <p class="qr-name">Akshay Vyas</p>
+        <p class="qr-role">PhD Candidate in Computer Science<br>The University of Texas at Dallas</p>
+      </div>
+      <button type="button" class="lb-close qr-close" data-qr-close aria-label="Close">×</button>
+    </div>
+    <div class="qr-switch" role="group" aria-label="Choose a code" data-cv hidden>
+      <button type="button" data-qr-show="site" aria-pressed="true">Website</button>
+      <button type="button" data-qr-show="cv" aria-pressed="false">Resume</button>
+    </div>
+    <div class="qr-grid" data-show="site">
+      <figure class="qr-card" data-card="site">
+        <img class="qr-img" src="qr-website.svg" alt="QR code for akshay25vyas.github.io" width="240" height="240">
+        <figcaption><b>Website</b><span class="qr-sub">akshay25vyas.github.io</span></figcaption>
+        <div class="qr-actions">
+          <button type="button" class="btn-small" data-copy-url="https://akshay25vyas.github.io/">Copy link</button>
+          <a class="btn-small" href="qr-website.png" download="Akshay_Vyas_website_QR.png">Save image</a>
+        </div>
+      </figure>
+      <figure class="qr-card" data-card="cv" data-cv hidden>
+        <img class="qr-img" src="qr-resume.svg" alt="QR code for Akshay Vyas's resume, a PDF" width="240" height="240">
+        <figcaption><b>Resume</b><span class="qr-sub">PDF</span></figcaption>
+        <div class="qr-actions">
+          <button type="button" class="btn-small" data-copy-url="https://akshay25vyas.github.io/Akshay_Vyas_public_resume.pdf">Copy link</button>
+          <a class="btn-small" href="qr-resume.png" download="Akshay_Vyas_resume_QR.png">Save image</a>
+        </div>
+      </figure>
+    </div>
+    <p class="qr-hint">Scan with a phone camera to open.</p>
   </div>
 </dialog>
 
@@ -956,6 +1031,22 @@ button.pub-fig:hover img { transform: scale(1.03); }
       var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
     } catch (e) { /* selection unavailable */ }
   }
+  function copyText(text, btn) {
+    var legacy = function () {
+      var ok = false, ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", "");
+      ta.style.cssText = "position:fixed;top:0;left:0;opacity:0;";
+      (btn.closest("dialog") || document.body).appendChild(ta);
+      try { ta.select(); ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      ta.remove();
+      flash(btn, ok ? "Copied" : "Copy failed");
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { flash(btn, "Copied"); }, legacy);
+      } else { legacy(); }
+    } catch (e) { legacy(); }
+  }
   function copy(text, btn, node) {
     var fallback = function () { if (node) selectNode(node); flash(btn, "Selected"); };
     try {
@@ -978,16 +1069,17 @@ button.pub-fig:hover img { transform: scale(1.03); }
     var b = e.target.closest("[data-copy-email]");
     if (b) { copy(EMAIL, b, b.parentElement.querySelector("[data-email]")); return; }
     var c = e.target.closest("[data-copy-from]");
-    if (c) { var node = document.getElementById(c.dataset.copyFrom); if (node) copy(node.textContent, c, node); }
+    if (c) { var node = document.getElementById(c.dataset.copyFrom); if (node) copy(node.textContent, c, node); return; }
+    var u = e.target.closest("[data-copy-url]");
+    if (u) copyText(u.dataset.copyUrl, u);
   });
 
   /* Photo: shown once photo.jpg exists; the monogram stays otherwise. */
-  var photo = $("[data-photo]");
-  if (photo) {
+  $$("[data-photo]").forEach(function (photo) {
     var showPhoto = function () { if (photo.naturalWidth > 0) photo.hidden = false; };
     if (photo.complete) showPhoto();
     photo.addEventListener("load", showPhoto);
-  }
+  });
 
   /* CV: the buttons appear once Akshay_Vyas_public_resume.pdf exists. */
   var CV_URL = "Akshay_Vyas_public_resume.pdf";
@@ -1028,6 +1120,33 @@ button.pub-fig:hover img { transform: scale(1.03); }
   if (dlg) {
     $("#lightbox-close").addEventListener("click", function () { dlg.close(); });
     dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+  }
+
+  /* QR codes: open from any [data-qr-open] link, or straight from akshay25vyas.github.io/#qr. */
+  var qr = $("#qr");
+  function openQR() {
+    if (!qr) return;
+    if (typeof qr.showModal === "function") { if (!qr.open) qr.showModal(); }
+    else { window.open("qr-website.png", "_blank"); }
+  }
+  $$("[data-qr-open]").forEach(function (a) {
+    a.addEventListener("click", function (e) { e.preventDefault(); openQR(); });
+  });
+  if (qr) {
+    var qrGrid = $(".qr-grid", qr), qrTabs = $$("[data-qr-show]", qr);
+    qrTabs.forEach(function (b) {
+      b.addEventListener("click", function () {
+        qrGrid.dataset.show = b.dataset.qrShow;
+        qrTabs.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+      });
+    });
+    $("[data-qr-close]", qr).addEventListener("click", function () { qr.close(); });
+    qr.addEventListener("click", function (e) { if (e.target === qr) qr.close(); });
+    qr.addEventListener("close", function () {
+      if (location.hash === "#qr" && history.replaceState) history.replaceState(null, "", location.pathname + location.search);
+    });
+    if (location.hash === "#qr") openQR();
+    window.addEventListener("hashchange", function () { if (location.hash === "#qr") openQR(); });
   }
 
   /* Shared tooltip placement, clamped inside its container. */
