@@ -42,6 +42,8 @@ The resume code points at `Akshay_Vyas_public_resume.pdf`. Keep that filename wh
 
 News items are near the top of the page body, under `<section id="news"`. Copy one `<li>...</li>` line and change its date and text to add a new one.
 
+Projects are under `<section id="projects"`. Each `<article class="pub project">` is one card: a poster image on the left (the DARPA PTG card uses the YouTube thumbnail of the program video and links to it) and the title, description and link pills on the right. Copy a whole `<article>...</article>` block to add another project.
+
 ## Refresh the LinkedIn preview
 
 LinkedIn caches link previews. After changing `og-card.png` or the page description, paste the site address into https://www.linkedin.com/post-inspector/ and click **Inspect** to refresh it.

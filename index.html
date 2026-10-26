@@ -251,6 +251,15 @@ button.pub-fig:hover img { transform: scale(1.03); }
 .result-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
 .result h4 { font-family: var(--f-display); font-size: 1.25rem; font-weight: 600; margin: 0; }
 
+/* Projects: the same figure-and-body layout as a paper, with a video poster in place of the figure. */
+a.pub-fig { position: relative; cursor: pointer; }
+a.pub-fig:hover img { transform: scale(1.03); }
+.play { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%; display: grid; place-items: center; background: rgba(12, 17, 28, 0.78); color: #FFFFFF; box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85), 0 6px 18px rgba(0, 0, 0, 0.25); transition: background .2s ease, transform .2s ease; }
+.play svg { width: 20px; height: 20px; margin-left: 3px; fill: currentColor; }
+a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
+.proj-role { margin: 8px 0 0; font-size: .875rem; color: var(--ink-2); line-height: 1.5; }
+.proj-role b { color: var(--ink); font-weight: 600; }
+
 /* Metric chart */
 .chart { position: relative; margin: 6px 0; padding: 20px 20px 16px; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; }
 .chart-title { display: block; font-weight: 600; font-size: 1rem; line-height: 1.35; }
@@ -434,6 +443,7 @@ button.pub-fig:hover img { transform: scale(1.03); }
     <a href="#news">News</a>
     <a href="#publications">Papers</a>
     <a href="#research">Research</a>
+    <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -474,6 +484,7 @@ button.pub-fig:hover img { transform: scale(1.03); }
         <a href="#news">News</a>
         <a href="#publications">Publications</a>
         <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#background">Background</a>
@@ -823,6 +834,30 @@ button.pub-fig:hover img { transform: scale(1.03); }
       </article>
     </section>
 
+    <section id="projects" class="sec" aria-labelledby="h-projects">
+      <h2 id="h-projects">Projects</h2>
+      <div class="pubs">
+
+        <article class="pub project" id="darpa-ptg">
+          <a class="pub-fig" href="https://www.youtube.com/watch?v=pEM8gcRkA7M" target="_blank" rel="noopener" aria-label="Watch DARPA's video on the Perceptually-enabled Task Guidance program on YouTube">
+            <img src="https://i.ytimg.com/vi/pEM8gcRkA7M/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/pEM8gcRkA7M/hqdefault.jpg" alt="Still from DARPA's video on the Perceptually-enabled Task Guidance program." width="640" height="400" loading="lazy" referrerpolicy="no-referrer">
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+          </a>
+          <div class="pub-body">
+            <p class="pub-venue"><span class="venue">DARPA PTG</span><span class="badge">Demonstrated at MIT, 2023</span></p>
+            <h3 class="pub-title">First-person AR task guidance for the kitchen</h3>
+            <p class="pub-tldr">A first-person AR assistant on Microsoft HoloLens 2 that recognizes the objects in front of the user and gives real-time guidance for kitchen tasks such as cooking and making coffee, built under DARPA's Perceptually-enabled Task Guidance program.</p>
+            <p class="proj-role"><b>My part</b> was the perception stack: kitchen-object detection with Detectron2 and Grounding DINO, class refinement with CLIP, real-time segmentation with SAM and MobileSAM, and 3D object localization that fuses HoloLens 2 depth with SIFT matching in a ROS pipeline.</p>
+            <div class="pub-links">
+              <a class="pill" href="https://www.youtube.com/watch?v=pEM8gcRkA7M" target="_blank" rel="noopener">Watch the DARPA video</a>
+              <a class="pill" href="https://www.darpa.mil/research/programs/perceptually-enabled-task-guidance" target="_blank" rel="noopener">Program page</a>
+              <a class="pill" href="https://www.cise.ufl.edu/~eragan/papers/Rheault_VR2024.pdf" target="_blank" rel="noopener">IEEE VR 2024 paper</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="experience" class="sec" aria-labelledby="h-experience">
       <h2 id="h-experience">Experience</h2>
       <ol class="timeline">
@@ -1121,6 +1156,14 @@ button.pub-fig:hover img { transform: scale(1.03); }
     $("#lightbox-close").addEventListener("click", function () { dlg.close(); });
     dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
   }
+
+  /* Video posters: if the high-resolution YouTube thumbnail is missing (YouTube then serves a tiny placeholder rather than a 404), swap in the standard one. */
+  $$("img[data-fallback]").forEach(function (img) {
+    function swap() { if (img.dataset.fallback) { var next = img.dataset.fallback; delete img.dataset.fallback; img.src = next; } }
+    img.addEventListener("error", swap);
+    img.addEventListener("load", function () { if (img.naturalWidth < 300) swap(); });
+    if (img.complete && img.naturalWidth < 300) swap();
+  });
 
   /* QR codes: open from any [data-qr-open] link, or straight from akshay25vyas.github.io/#qr. */
   var qr = $("#qr");
