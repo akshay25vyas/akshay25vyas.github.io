@@ -211,6 +211,9 @@ button.pub-fig:hover img { transform: scale(1.03); }
 .pub-links { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px; margin-top: 12px; }
 .pill { display: inline-flex; align-items: center; font: 500 .8125rem/1 var(--f-ui); padding: 7px 12px; border-radius: 999px; border: 1px solid var(--rule-strong); color: var(--ink); background: var(--surface); text-decoration: none; cursor: pointer; }
 .pill:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+.pill.pdf { gap: 6px; font-weight: 600; background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.pill.pdf:hover { color: var(--paper); filter: brightness(1.08); }
+.pill.pdf svg { width: 14px; height: 14px; flex: none; }
 .pill[aria-expanded="true"] { background: var(--wash); border-color: var(--accent); color: var(--accent); }
 .more-box { margin-top: 12px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; }
 .more-box p { margin: 0; font-size: .9375rem; line-height: 1.6; color: var(--ink-2); }
@@ -513,6 +516,7 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
     <section id="news" class="sec" aria-labelledby="h-news">
       <h2 id="h-news">News</h2>
       <ol class="news">
+        <li><time datetime="2026-10">Oct 2026</time><p>Posted <b>Learning to Bound</b> and an extended version of our AAAI 2026 paper, with its full appendix, on arXiv.</p></li>
         <li><time datetime="2026-10">Oct 2026</time><p>I'm on the job market for full-time research scientist and research engineer roles from January 2027, research internships, and faculty positions.</p></li>
         <li><time datetime="2026-09">Sep 2026</time><p><b>Neural Dual Bounds</b> was accepted at NeurIPS 2026 as a Spotlight, one of 292 among 30,709 submissions.</p></li>
         <li><time datetime="2025-11">Nov 2025</time><p>Our paper on evaluating evaluation metrics was accepted at AAAI 2026.</p></li>
@@ -563,7 +567,9 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
             <p class="pub-tldr">Uses approximate task invariants to test which evaluation metrics register the difference between models trained with and without them, across colorization, translation and captioning.</p>
             <p class="pub-rate">AAAI 2026: 17.6% acceptance (4,167 of 23,680 submissions).</p>
             <div class="pub-links">
-              <a class="pill" href="https://ojs.aaai.org/index.php/AAAI/article/view/39808" target="_blank" rel="noopener">Paper</a>
+              <a class="pill pdf" href="https://arxiv.org/pdf/2610.39162" target="_blank" rel="noopener" title="Full version with the technical appendix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg>PDF</a>
+              <a class="pill" href="https://arxiv.org/abs/2610.39162" target="_blank" rel="noopener">arXiv</a>
+              <a class="pill" href="https://ojs.aaai.org/index.php/AAAI/article/view/39808" target="_blank" rel="noopener">AAAI</a>
               <a class="pill" href="https://github.com/akshay25vyas/invariants-metric-eval" target="_blank" rel="noopener">Code</a>
               <button type="button" class="pill" aria-expanded="false" aria-controls="evaluating-metrics-abstract">Abstract</button>
               <button type="button" class="pill" aria-expanded="false" aria-controls="evaluating-metrics-bibtex">BibTeX</button>
@@ -606,6 +612,22 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
             <h3 class="pub-title">Learning to Bound: Monotonic, Calibrated Neural Upper Bounds for MPE Inference</h3>
             <p class="pub-authors"><b>Akshay Vyas</b>, Hailiang Dong, Shivvrat Arya, Brij Malhotra, Tahrima Rahman, Vibhav Gogate, Nicholas Ruozzi</p>
             <p class="pub-tldr">Neural bounds that are monotone by construction and calibrated with finite-sample coverage, used as heuristics inside AND/OR branch-and-bound. On Bayesian networks they are 5 to 10 times tighter than mini-bucket bounds at i-bound 4 and arrive in milliseconds.</p>
+            <div class="pub-links">
+              <a class="pill pdf" href="https://arxiv.org/pdf/2610.39305" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg>PDF</a>
+              <a class="pill" href="https://arxiv.org/abs/2610.39305" target="_blank" rel="noopener">arXiv</a>
+              <button type="button" class="pill" aria-expanded="false" aria-controls="learning-to-bound-abstract">Abstract</button>
+              <button type="button" class="pill" aria-expanded="false" aria-controls="learning-to-bound-bibtex">BibTeX</button>
+            </div>
+            <div class="more-box" id="learning-to-bound-abstract" hidden><p>Probabilistic graphical models (PGMs) compactly encode structured joint distributions, but Most Probable Explanation (MPE), which finds the highest-probability assignment to unobserved variables, remains computationally intractable in large, densely structured models. Anytime systematic search, such as branch-and-bound (B&amp;B), is a popular approach, but its efficiency depends on tight admissible upper bounds that are often prohibitively expensive to compute using classical methods like Mini-Bucket Elimination (MBE). We introduce Learning to Bound (L2B), a data-driven framework that amortizes bound computation cost by training a neural predictor. L2B targets two key properties required for effective search bounds: admissibility, which is achieved via statistical calibration techniques, and progressive tightening as evidence accumulates, which is enforced through structural architectural constraints that ensure monotonicity by construction. Across challenging benchmarks, L2B delivers tighter, monotonic bounds at orders-of-magnitude lower cost on every PGM family, and yields measurable improvements when integrated with branch-and-bound on high-treewidth instances.</p></div>
+            <div class="more-box" id="learning-to-bound-bibtex" hidden><pre id="bib-l2b">@article{vyas2026learning,
+  title     = {Learning to Bound: Monotonic, Calibrated Neural
+               Upper Bounds for {MPE} Inference},
+  author    = {Vyas, Akshay and Dong, Hailiang and Arya, Shivvrat
+               and Malhotra, Brij and Rahman, Tahrima
+               and Gogate, Vibhav and Ruozzi, Nicholas},
+  journal   = {arXiv preprint arXiv:2610.39305},
+  year      = {2026}
+}</pre><button type="button" class="btn-small" data-copy-from="bib-l2b">Copy BibTeX</button></div>
           </div>
         </article>
 
@@ -620,7 +642,7 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
             <p class="pub-tldr">384 egocentric recordings (94.5 hours) of people cooking from recipes, some following the steps and some deliberately making errors, benchmarked for error recognition, multi-step localization and procedure learning.</p>
             <p class="pub-rate">NeurIPS 2024 Datasets and Benchmarks: 25.3% acceptance (460 of 1,820 submissions).</p>
             <div class="pub-links">
-              <a class="pill" href="https://proceedings.neurips.cc/paper_files/paper/2024/file/f4a04396c2ed1342a5d8d05e94cb6101-Paper-Datasets_and_Benchmarks_Track.pdf" target="_blank" rel="noopener">Paper</a>
+              <a class="pill pdf" href="https://proceedings.neurips.cc/paper_files/paper/2024/file/f4a04396c2ed1342a5d8d05e94cb6101-Paper-Datasets_and_Benchmarks_Track.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg>PDF</a>
               <a class="pill" href="https://arxiv.org/abs/2312.14556" target="_blank" rel="noopener">arXiv</a>
               <a class="pill" href="https://captaincook4d.github.io/captain-cook/" target="_blank" rel="noopener">Project</a>
               <a class="pill" href="https://github.com/CaptainCook4D/annotations" target="_blank" rel="noopener">Annotations</a>
