@@ -42,6 +42,10 @@ The resume code points at `Akshay_Vyas_public_resume.pdf`. Keep that filename wh
 
 News items are near the top of the page body, under `<section id="news"`. Copy one `<li>...</li>` line and change its date and text to add a new one.
 
+Students you have mentored are under `<section id="teaching"`. Each `<li class="tl">...</li>` block is one student: the dates on the left, then the name, a one-line role, a short paragraph and optional link pills. Copy a block to add a student, and keep the most recent one on top. The courses you have assisted are in the same section under "Teaching assistant"; the second line of each course is a good place for the semester and instructor.
+
+The short personal section is under `<section id="beyond"`. It is two paragraphs of plain text.
+
 Projects are under `<section id="projects"`. Each `<article class="pub project">` is one card: a poster image on the left (the DARPA PTG card uses the YouTube thumbnail of the program video and links to it) and the title, description and link pills on the right. Copy a whole `<article>...</article>` block to add another project.
 
 ## Refresh the LinkedIn preview

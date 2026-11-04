@@ -376,6 +376,9 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
 .bg li { color: var(--ink-2); font-size: .9375rem; line-height: 1.5; }
 .bg li b { display: block; color: var(--ink); font-weight: 600; }
 @media (max-width: 640px) { .bg { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+.teach-h { font-family: var(--f-ui); font-size: .8125rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 16px; }
+.timeline + .teach-h { margin-top: 44px; padding-top: 36px; border-top: 1px dashed var(--rule-strong); }
+.tl-what .pub-links { margin-top: 10px; }
 
 /* Contact */
 .contact-line { font-family: var(--f-display); font-size: clamp(1.55rem, 3vw, 2.1rem); line-height: 1.2; margin: 0; max-width: 26ch; }
@@ -451,6 +454,7 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
     <a href="#research">Research</a>
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
+    <a href="#teaching">Teaching</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -492,8 +496,10 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
         <a href="#research">Research</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
+        <a href="#teaching">Teaching</a>
         <a href="#skills">Skills</a>
         <a href="#background">Background</a>
+        <a href="#beyond">Beyond research</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -931,6 +937,66 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
       </ol>
     </section>
 
+    <section id="teaching" class="sec" aria-labelledby="h-teaching">
+      <h2 id="h-teaching">Teaching and mentoring</h2>
+      <p class="sec-note">Students I have worked with at UT Dallas, and the courses I have assisted.</p>
+
+      <h3 class="teach-h">Students</h3>
+      <ol class="timeline">
+        <li class="tl">
+          <div class="tl-when">Fall 2026–present</div>
+          <div class="tl-what">
+            <h3>Ben Dowell Carcasi</h3>
+            <p class="tl-org">M.S. student, UT Dallas</p>
+            <p>Ben and I meet every week on the follow-up to my AAAI 2026 paper: a human study of image captions that measures which semantic properties people insist on preserving, so that automatic judges can be tested against them. He is working with me on the design and collection of the human-judgment dataset.</p>
+          </div>
+        </li>
+        <li class="tl">
+          <div class="tl-when">2023–2024</div>
+          <div class="tl-what">
+            <h3>Angelo Pimienta</h3>
+            <p class="tl-org">Undergraduate student, UT Dallas · co-author, AAAI 2026</p>
+            <p>Angelo joined the metrics project as an undergraduate. Over two semesters I brought him onto the image colorization experiments, and he trained the depth-regularized ChromaGAN variant that is reported in the paper. He is a co-author on our AAAI 2026 paper.</p>
+            <div class="pub-links">
+              <a class="pill" href="https://www.linkedin.com/in/pimientaa/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
+        </li>
+        <li class="tl">
+          <div class="tl-when">2023</div>
+          <div class="tl-what">
+            <h3>Griffin Davis</h3>
+            <p class="tl-org">B.S./M.S. student in Computer Science, UT Dallas · now a software engineer at IBM</p>
+            <p>Griffin and I built a web platform for drawing object-detection labels on kitchen images for our DARPA Perceptually-enabled Task Guidance work. We designed the labeling pipeline together, Griffin deployed it on AWS, and students labeled the data through it. The labels it produced trained the kitchen-object detector behind the AR assistant we demonstrated at MIT in 2023.</p>
+            <div class="pub-links">
+              <a class="pill" href="https://gcd.dev/" target="_blank" rel="noopener">Website</a>
+              <a class="pill" href="https://www.linkedin.com/in/griffindvs/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
+        </li>
+      </ol>
+
+      <h3 class="teach-h">Teaching assistant</h3>
+      <div class="bg">
+        <div>
+          <h3>The University of Texas at Dallas</h3>
+          <!-- To match a course with its semester and instructor, change the second line, e.g. "Fall 2026 · Prof. Nicholas Ruozzi" -->
+          <ul>
+            <li><b>CS 6347 Statistical Methods in AI and ML</b>Graduate course</li>
+            <li><b>CS 6364 Artificial Intelligence</b>Graduate course</li>
+            <li><b>CS 4375 Introduction to Machine Learning</b>Undergraduate course</li>
+            <li><b>CS 4365 Introduction to Artificial Intelligence</b>Undergraduate course</li>
+          </ul>
+        </div>
+        <div>
+          <h3>IIIT Hyderabad</h3>
+          <ul>
+            <li><b>Electronic Workshop II</b>Undergraduate course</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section id="skills" class="sec" aria-labelledby="h-skills">
       <h2 id="h-skills">Skills</h2>
       <div class="skills">
@@ -977,18 +1043,19 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
           </ul>
         </div>
         <div>
-          <h3>Teaching</h3>
-          <ul>
-            <li><b>Teaching assistant, UT Dallas</b>CS 6347 Statistical Methods in AI and ML, CS 4375 Introduction to Machine Learning, CS 6364 Artificial Intelligence, CS 4365 Introduction to Artificial Intelligence</li>
-            <li><b>Teaching assistant, IIIT Hyderabad</b>Electronic Workshop II</li>
-          </ul>
-        </div>
-        <div>
           <h3>Service</h3>
           <ul>
             <li><b>Reviewer</b>NeurIPS 2026</li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <section id="beyond" class="sec" aria-labelledby="h-beyond">
+      <h2 id="h-beyond">Beyond research</h2>
+      <div class="prose">
+        <p>I have played cricket since I was seven and still bat whenever I can find a game, and I never miss an ICC tournament. Table tennis came next and stuck, including a men's singles gold at a national inter-college festival. These days it is mostly badminton: three hours of singles every week with a friend at UT Dallas.</p>
+        <p>I swim, and I like long days outdoors. On a recent trip to the Rockies I hiked alone through snow to Chasm Lake, below Longs Peak. Indoors, it is thrillers, time-travel plots, and horror movies with friends.</p>
       </div>
     </section>
 
@@ -1008,7 +1075,7 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
       </div>
     </section>
 
-    <footer class="foot">© 2026 Akshay Vyas. Updated October 2026.</footer>
+    <footer class="foot">© 2026 Akshay Vyas. Updated November 2026.</footer>
   </main>
 </div>
 
