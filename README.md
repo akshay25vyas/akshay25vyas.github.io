@@ -6,7 +6,7 @@ Live site: https://akshay25vyas.github.io/
 
 ## What's in this repository
 
-Everything sits at the top level, with no folders, so it can be uploaded in one go from GitHub's file picker.
+Everything for the homepage sits at the top level, so it can be uploaded in one go from GitHub's file picker. The one folder, `neural-dual-bounds/`, holds the project page for the NeurIPS 2026 paper.
 
 | Files | What they are |
 |---|---|
@@ -18,6 +18,21 @@ Everything sits at the top level, with no folders, so it can be uploaded in one 
 | `qr-website.*`, `qr-resume.*` | QR codes for the site and the resume (SVG shown on the page, PNG for download) |
 | `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Browser and phone icons |
 | `robots.txt`, `sitemap.xml` | Help search engines find the site |
+| `neural-dual-bounds/` | Project page for the NeurIPS 2026 Spotlight paper, with its PDF (see below) |
+
+## Neural Dual Bounds project page
+
+Live at https://akshay25vyas.github.io/neural-dual-bounds/. This is the address for the "Project Page URL" field on the NeurIPS poster page.
+
+| Files in `neural-dual-bounds/` | What they are |
+|---|---|
+| `index.html` | The page. It is generated, so edit the sources in `_src/` and rebuild instead of editing it directly |
+| `Neural_Dual_Bounds_NeurIPS_2026.pdf` | The camera-ready paper. To update it, upload a new file with the same name |
+| `og-card.png`, `paper-first-page.jpg` | Link preview image and the paper thumbnail |
+| `katex/` | Fonts and styles for the math (MIT license, included) |
+| `_src/` | Build sources, data parsed from the paper's tables, and tests. Not published. `_src/README.md` explains how to rebuild |
+
+The homepage links to it from the Nov 2026 news item, from the PDF and Project page buttons on the paper under Publications, and from the links under "Learned inference with guarantees" in Research.
 
 ## Add your photo and CV
 
