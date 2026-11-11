@@ -238,7 +238,7 @@ html:not(.js) .needs-js { display: none !important; }
       <div class="prose">
         <p>Because every output is feasible, the bound can be the loss. We replace the hard max with the log-sum-exp surrogate \(D_\tau\), which is differentiable and, by Proposition 1, still an upper bound, and minimize it directly over sampled evidence configurations. There are no optimal messages to generate, no LP solves and no JGLP runs during training, and a single backward pass through the smooth dual gives the gradient.</p>
         <p>Two design choices matter more than the network's size. Predicting edge messages instead of cluster tables keeps the output in the valid subspace: with edge messages the network's bound beat the mini-bucket bound on 94% of test instances, and with direct cluster-table prediction on none. Training on the bound also beat regressing onto JGLP's messages, 94% against 72% on BN_12.</p>
-        <p>Constrained MAP is the one place we use targets. There the network is supervised with LP-optimal messages for each Lagrangian, which reached comparable tightness at lower cost, and a variant trained on the smooth dual alone gave similar bound quality in a six-model pilot (Appendix B.20).</p>
+        <p>For constrained MAP we report two training routes. One supervises the network with LP-optimal messages for each Lagrangian. The other uses the same smooth dual with no LP in the loop, and it gave similar bound quality in a six-model pilot (Appendices B.20 and B.28).</p>
       </div>
       <aside class="side"><p class="ref">In the paper: Section 3 and Section 4.1. Training cost and the architecture and training-set sweeps are in Appendix B.27.</p></aside>
     </div>
@@ -322,7 +322,7 @@ html:not(.js) .needs-js { display: none !important; }
       <div class="prose">
         <p>Constrained MAP asks for the most probable assignment subject to budgets defined by other models on the same graph, which covers safety, fairness, adversarial and resource-constrained reasoning. Its Lagrangian relaxation is a sequence of MAP bounds: projected gradient descent on the multipliers \(\mu \ge 0\), with one inner bound per step.</p>
         <div class="eq">\[L(\mu) = \max_x \Big[ \sum_{\alpha} \theta_\alpha(x_\alpha) - \sum_{k=1}^{K} \mu_k \Big( \sum_{\alpha} \theta^k_\alpha(x_\alpha) - q_k \Big) \Big].\]</div>
-        <p>A hundred multiplier steps means a hundred closely related queries on one graph, and with several constraints the multiplier is a vector, which earlier bounding methods for this task do not handle directly. We condition the network on \(\mu\), train it offline against LP-optimal messages for each Lagrangian, and compare four ways to start each inner solve.</p>
+        <p>A hundred multiplier steps means a hundred closely related queries on one graph, and with several constraints the multiplier is a vector, which earlier bounding methods for this task do not handle directly. We condition the network on \(\mu\) and compare four ways to start each inner solve.</p>
       </div>
       <aside class="side">
         <p class="ref">In the paper: Section 4.2, Tables 2 and 3, and the algorithm listings in Appendix B.</p>
