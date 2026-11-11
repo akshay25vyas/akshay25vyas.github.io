@@ -542,14 +542,14 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
       <div class="pubs">
 
         <article class="pub" id="neural-dual-bounds">
-          <button type="button" class="pub-fig" data-full="ndb-convergence-full.png" data-caption="JGLP convergence from zero initialization (blue) and from the neural warm start (red) on BN_12, grid20×20.f10 and Segmentation_14. The star marks the bound from a single forward pass, about 0.04 ms. Both runs approach the same optimum, D*." aria-label="Enlarge the Neural Dual Bounds convergence figure">
+          <button type="button" class="pub-fig" data-full="ndb-convergence-full.png" data-caption="JGLP convergence from zero initialization (blue) and from the neural warm start (red) on BN_12, grid20×20.f10 and Segmentation_14. The star marks the bound from a single forward pass, which takes about 0.04 ms in a GPU batch and 0.23 to 0.39 ms for a single query on a CPU. Both runs approach the same optimum, D*." aria-label="Enlarge the Neural Dual Bounds convergence figure">
             <img src="ndb-thumb.png" alt="Convergence plot: the neurally warm-started JGLP bound (red) drops to the optimum far sooner than the zero-initialized bound (blue)." width="640" height="400">
           </button>
           <div class="pub-body">
             <p class="pub-venue"><span class="venue">NeurIPS 2026</span><span class="badge award">Spotlight</span><span class="badge">First author</span></p>
             <h3 class="pub-title">Neural Dual Bounds: Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP</h3>
             <p class="pub-authors"><b>Akshay Vyas</b>, Shivvrat Arya, Brij Malhotra, Tahrima Rahman, Vibhav Gogate, Nicholas Ruozzi</p>
-            <p class="pub-tldr">A network that outputs antisymmetric edge messages, so every prediction is a valid upper bound on the MAP value whatever the weights. Its warm starts tighten JGLP by up to six orders of magnitude within 100 iterations.</p>
+            <p class="pub-tldr">A network that outputs antisymmetric edge messages, so every prediction is a valid upper bound on the MAP value whatever the weights. As a warm start it tightens JGLP's bound in the early iterations, and with test-time adaptation it gives the tightest bounds for constrained MAP on grid and segmentation models.</p>
             <p class="pub-rate">Spotlight: 292 of 30,709 submissions (top 1%). Main track acceptance: 25.7% (7,900 of 30,709).</p>
             <div class="pub-links">
               <a class="pill pdf" href="neural-dual-bounds/Neural_Dual_Bounds_NeurIPS_2026.pdf" target="_blank" rel="noopener" title="Camera-ready paper with the appendix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg>PDF</a>
@@ -859,7 +859,7 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
 
         <div class="result">
           <div class="result-head"><h4>Neural Dual Bounds</h4><span class="badge award">NeurIPS 2026 Spotlight</span></div>
-          <div class="prose"><p>The network outputs antisymmetric edge messages on a join graph, so every output, whether trained, untrained or adversarial, yields a valid upper bound on the MAP value. For MAP it trains self-supervised against a smooth dual objective, with no LP solver and no optimal labels. On UAI benchmark models its warm starts cut JGLP's dual gap by up to six orders of magnitude within 100 iterations, and test-time adaptation extends the method to MAP under multiple constraints.</p></div>
+          <div class="prose"><p>The network outputs antisymmetric edge messages on a join graph, so every output, whether trained, untrained or adversarial, yields a valid upper bound on the MAP value. For MAP it trains self-supervised against a smooth dual objective, with no LP solver and no optimal labels. On UAI benchmark models its warm starts tighten JGLP's bound in the early iterations, where a search spends its time, and test-time adaptation extends the method to MAP under multiple constraints.</p></div>
         </div>
         <div class="result">
           <div class="result-head"><h4>Learning to Bound</h4><span class="badge quiet">Under review</span></div>
