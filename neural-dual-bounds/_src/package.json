@@ -1,0 +1,13 @@
+{
+  "name": "neural-dual-bounds-page",
+  "private": true,
+  "description": "Build sources for https://akshay25vyas.github.io/neural-dual-bounds/",
+  "scripts": {
+    "data": "node data/prepare.mjs",
+    "build": "node build.mjs ..",
+    "test": "node test/interact.mjs"
+  },
+  "dependencies": {
+    "katex": "0.16.47"
+  }
+}
