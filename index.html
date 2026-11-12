@@ -525,6 +525,7 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
     <section id="news" class="sec" aria-labelledby="h-news">
       <h2 id="h-news">News</h2>
       <ol class="news">
+        <li><time datetime="2026-11">Nov 2026</time><p>The camera-ready paper and a <a href="neural-dual-bounds/">project page</a> for <b>Neural Dual Bounds</b> are up, ahead of the NeurIPS 2026 poster session on December 10.</p></li>
         <li><time datetime="2026-10">Oct 2026</time><p>Posted <b>Learning to Bound</b> and an extended version of our AAAI 2026 paper, with its full appendix, on arXiv.</p></li>
         <li><time datetime="2026-10">Oct 2026</time><p>I'm on the job market for full-time research scientist and research engineer roles from January 2027, research internships, and faculty positions.</p></li>
         <li><time datetime="2026-09">Sep 2026</time><p><b>Neural Dual Bounds</b> was accepted at NeurIPS 2026 as a Spotlight, one of 292 among 30,709 submissions.</p></li>
@@ -541,18 +542,23 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
       <div class="pubs">
 
         <article class="pub" id="neural-dual-bounds">
-          <button type="button" class="pub-fig" data-full="ndb-convergence-full.png" data-caption="JGLP convergence from zero initialization (blue) and from the neural warm start (red) on BN_12, grid20×20.f10 and Segmentation_14. The star marks the bound from a single forward pass, about 0.04 ms. Both runs approach the same optimum, D*." aria-label="Enlarge the Neural Dual Bounds convergence figure">
+          <button type="button" class="pub-fig" data-full="ndb-convergence-full.png" data-caption="JGLP convergence from zero initialization (blue) and from the neural warm start (red) on BN_12, grid20×20.f10 and Segmentation_14. The star marks the bound from a single forward pass, which takes about 0.04 ms in a GPU batch and 0.23 to 0.39 ms for a single query on a CPU. Both runs approach the same optimum, D*." aria-label="Enlarge the Neural Dual Bounds convergence figure">
             <img src="ndb-thumb.png" alt="Convergence plot: the neurally warm-started JGLP bound (red) drops to the optimum far sooner than the zero-initialized bound (blue)." width="640" height="400">
           </button>
           <div class="pub-body">
             <p class="pub-venue"><span class="venue">NeurIPS 2026</span><span class="badge award">Spotlight</span><span class="badge">First author</span></p>
             <h3 class="pub-title">Neural Dual Bounds: Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP</h3>
             <p class="pub-authors"><b>Akshay Vyas</b>, Shivvrat Arya, Brij Malhotra, Tahrima Rahman, Vibhav Gogate, Nicholas Ruozzi</p>
-            <p class="pub-tldr">A network that outputs antisymmetric edge messages, so every prediction is a valid upper bound on the MAP value whatever the weights. Its warm starts tighten JGLP by up to six orders of magnitude within 100 iterations.</p>
+            <p class="pub-tldr">A network that outputs antisymmetric edge messages, so every prediction is a valid upper bound on the MAP value whatever the weights. As a warm start it tightens JGLP's bound in the early iterations, and with test-time adaptation it gives the tightest bounds for constrained MAP on grid and segmentation models.</p>
             <p class="pub-rate">Spotlight: 292 of 30,709 submissions (top 1%). Main track acceptance: 25.7% (7,900 of 30,709).</p>
             <div class="pub-links">
+              <a class="pill pdf" href="neural-dual-bounds/Neural_Dual_Bounds_NeurIPS_2026.pdf" target="_blank" rel="noopener" title="Camera-ready paper with the appendix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg>PDF</a>
+              <a class="pill" href="neural-dual-bounds/">Project page</a>
+              <a class="pill" href="https://neurips.cc/virtual/2026/poster/150753" target="_blank" rel="noopener">NeurIPS</a>
+              <button type="button" class="pill" aria-expanded="false" aria-controls="neural-dual-bounds-abstract">Abstract</button>
               <button type="button" class="pill" aria-expanded="false" aria-controls="neural-dual-bounds-bibtex">BibTeX</button>
             </div>
+            <div class="more-box" id="neural-dual-bounds-abstract" hidden><p>We present Neural Dual Bounds, a calibration-free framework that produces deterministic upper bounds for MAP inference in probabilistic graphical models using a single neural-network forward pass. The framework trains a network to output the edge messages of a mini-bucket style upper bound on a given join-graph decomposition in a self-supervised manner by directly minimizing a smooth dual objective. The output of this network can be used at test time to warm-start a standard JGLP optimizer. Across diverse benchmarks, this warm start yields dual gaps that are orders of magnitude tighter than those from zero initialization, with the largest gains in the early-iteration regime. We also apply our framework for the constrained MAP (CMPE) task, where neural warm starts with test-time adaptation are comparable to the adaptive baseline on Bayesian networks and achieve the tightest dual gaps, by one to two orders of magnitude, on the grid and segmentation families.</p></div>
             <div class="more-box" id="neural-dual-bounds-bibtex" hidden><pre id="bib-ndb">@inproceedings{vyas2026neural,
   title     = {Neural Dual Bounds: Valid-by-Construction {JGLP}
                Warm-Starts for {MAP} and Constrained {MAP}},
@@ -853,11 +859,15 @@ a.pub-fig:hover .play { background: var(--accent); transform: scale(1.06); }
 
         <div class="result">
           <div class="result-head"><h4>Neural Dual Bounds</h4><span class="badge award">NeurIPS 2026 Spotlight</span></div>
-          <div class="prose"><p>The network outputs antisymmetric edge messages on a join graph, so every output, whether trained, untrained or adversarial, yields a valid upper bound on the MAP value. For MAP it trains self-supervised against a smooth dual objective, with no LP solver and no optimal labels. On UAI benchmark models its warm starts cut JGLP's dual gap by up to six orders of magnitude within 100 iterations, and test-time adaptation extends the method to MAP under multiple constraints.</p></div>
+          <div class="prose"><p>The network outputs antisymmetric edge messages on a join graph, so every output, whether trained, untrained or adversarial, yields a valid upper bound on the MAP value. For MAP it trains self-supervised against a smooth dual objective, with no LP solver and no optimal labels. On UAI benchmark models its warm starts tighten JGLP's bound in the early iterations, where a search spends its time, and test-time adaptation extends the method to MAP under multiple constraints.</p></div>
         </div>
         <div class="result">
           <div class="result-head"><h4>Learning to Bound</h4><span class="badge quiet">Under review</span></div>
           <div class="prose"><p>A network that is monotone by construction, combined with stratified conformal calibration, gives fast heuristics for AND/OR branch-and-bound. On Bayesian networks its bounds are 5 to 10 times tighter than mini-bucket bounds at i-bound 4 and arrive in milliseconds. Along search paths it records zero ordering violations, where an unconstrained network inverts roughly one step in four.</p></div>
+        </div>
+        <div class="thread-links">
+          <a href="neural-dual-bounds/">Neural Dual Bounds project page</a>
+          <a href="neural-dual-bounds/Neural_Dual_Bounds_NeurIPS_2026.pdf" target="_blank" rel="noopener">Read the NeurIPS 2026 paper</a>
         </div>
       </article>
 

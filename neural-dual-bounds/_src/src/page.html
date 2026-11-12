@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neural Dual Bounds (NeurIPS 2026 Spotlight)</title>
+<meta name="description" content="Neural Dual Bounds, a NeurIPS 2026 Spotlight paper: a neural network whose every output is a valid upper bound on the MAP value of a probabilistic graphical model, used to warm-start JGLP for MAP and constrained MAP inference.">
+<meta name="author" content="Akshay Vyas, Shivvrat Arya, Brij Malhotra, Tahrima Rahman, Vibhav Gogate, Nicholas Ruozzi">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://akshay25vyas.github.io/neural-dual-bounds/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Akshay Vyas">
+<meta property="og:title" content="Neural Dual Bounds: Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP">
+<meta property="og:description" content="NeurIPS 2026 Spotlight. A neural network whose every output is a valid upper bound on the MAP value, by construction, used to warm-start JGLP.">
+<meta property="og:url" content="https://akshay25vyas.github.io/neural-dual-bounds/">
+<meta property="og:image" content="https://akshay25vyas.github.io/neural-dual-bounds/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Neural Dual Bounds, NeurIPS 2026 Spotlight. Every output of the network is a valid upper bound on the MAP value.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Neural Dual Bounds (NeurIPS 2026 Spotlight)">
+<meta name="twitter:description" content="A neural network whose every output is a valid upper bound on the MAP value, by construction, used to warm-start JGLP.">
+<meta name="twitter:image" content="https://akshay25vyas.github.io/neural-dual-bounds/og-card.png">
+<meta name="citation_title" content="Neural Dual Bounds: Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP">
+<meta name="citation_author" content="Vyas, Akshay">
+<meta name="citation_author" content="Arya, Shivvrat">
+<meta name="citation_author" content="Malhotra, Brij">
+<meta name="citation_author" content="Rahman, Tahrima">
+<meta name="citation_author" content="Gogate, Vibhav">
+<meta name="citation_author" content="Ruozzi, Nicholas">
+<meta name="citation_publication_date" content="2026">
+<meta name="citation_conference_title" content="Advances in Neural Information Processing Systems">
+<meta name="citation_pdf_url" content="https://akshay25vyas.github.io/neural-dual-bounds/{{pdf}}">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F7FA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C111C" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../newsreader-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="katex/katex.min.css">
+<script>document.documentElement.className += " js";</script>
+<style>
+{{css}}
+html:not(.js) .needs-js { display: none !important; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="bar-home" href="../" aria-label="Akshay Vyas, home page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span>Akshay Vyas</span></a>
+    <nav class="bar-nav" aria-label="On this page">
+      <a href="#idea">Idea</a>
+      <a href="#example">Example</a>
+      <a href="#validity">Validity</a>
+      <a href="#map">Results</a>
+      <a href="#limits">Limits</a>
+      <a href="#cite">Cite</a>
+    </nav>
+    <a class="btn btn-primary btn-sm bar-cta" href="{{pdf}}">Paper (PDF)</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="h-title">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="venue"><b>NeurIPS 2026</b><span class="badge award">Spotlight</span><span class="count">{{spot}} of {{subs}} submissions ({{spotpct}}%)</span></p>
+        <h1 class="title" id="h-title"><span class="t1">Neural Dual Bounds<span class="sr">:</span></span> <span class="t2">Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP</span></h1>
+        <ul class="authors" aria-label="Authors">
+          <li><a href="../">Akshay Vyas</a><sup>1</sup></li>
+          <li><a href="https://shivvrat.github.io/" target="_blank" rel="noopener">Shivvrat Arya</a><sup>2</sup></li>
+          <li>Brij Malhotra<sup>1</sup></li>
+          <li><a href="https://personal.utdallas.edu/~tahrima.rahman/" target="_blank" rel="noopener">Tahrima Rahman</a><sup>1</sup></li>
+          <li><a href="https://personal.utdallas.edu/~vibhav.gogate/" target="_blank" rel="noopener">Vibhav Gogate</a><sup>1</sup></li>
+          <li><a href="https://personal.utdallas.edu/~nicholas.ruozzi/" target="_blank" rel="noopener">Nicholas Ruozzi</a><sup>1</sup></li>
+        </ul>
+        <p class="affil"><sup>1</sup>The University of Texas at Dallas &nbsp; <sup>2</sup>New Jersey Institute of Technology</p>
+        <p class="lede">A neural network that predicts upper bounds for MAP inference, built so that every output is a valid bound. One forward pass gives a certificate that holds whatever the weights are, and it gives the classical JGLP solver a head start.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="{{pdf}}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg>Paper (PDF)</a>
+          <a class="btn" href="https://neurips.cc/virtual/2026/poster/150753" target="_blank" rel="noopener">NeurIPS page</a>
+          <a class="btn" href="#cite">Cite</a>
+        </div>
+        <p class="session"><b>Poster session:</b> Thursday, December 10, 2026, 10:00 AM to 1:00 PM Eastern, Hall C1, at the NeurIPS 2026 site in Atlanta.</p>
+      </div>
+
+      <figure class="proof" aria-labelledby="proof-h">
+        <figcaption>
+          <p class="proof-claim" id="proof-h">\(D(\theta, Am) \,\ge\, \mathrm{MAP}^*\)<span class="q">for every output m</span></p>
+          <p class="proof-text">The paper's three-cluster example has a true optimum of 17. The bars count the bounds that random message vectors m produce. None can land left of the line.</p>
+        </figcaption>
+        <div id="proof-plot">{{hist}}</div>
+        <dl class="proof-read">
+          <div><dt>Bounds drawn</dt><dd id="pf-n">{{hist.n}}</dd></div>
+          <div><dt>Below the optimum</dt><dd id="pf-bad">{{hist.below}}</dd></div>
+          <div><dt>Exactly at the optimum</dt><dd id="pf-exact">{{hist.exact}}</dd></div>
+        </dl>
+        <div class="proof-ctl needs-js">
+          <button type="button" class="btn btn-sm" id="pf-one">Draw one</button>
+          <button type="button" class="btn btn-sm" id="pf-many">Draw 500 more</button>
+          <a class="more" href="#example">Work the example</a>
+        </div>
+      </figure>
+    </div>
+
+    <dl class="short">
+      <div><dt>Valid by architecture</dt><dd>The network outputs antisymmetric edge messages on a join graph, so every output is an upper bound on the MAP value: trained, untrained or adversarial. We checked {{val.net}} such bounds against an exact LP solver and none fell below the optimum.</dd></div>
+      <div><dt>Trained without labels</dt><dd>For MAP inference the loss is the bound itself, through a smooth surrogate that is also a valid bound. Training needs no LP solver, no converged JGLP messages and no calibration set.</dd></div>
+      <div><dt>Useful where search spends its time</dt><dd>As a warm start it tightens JGLP's first iterations on {{map.pos10}} of {{map.models}} benchmark models. With test-time adaptation it gives the tightest bounds for constrained MAP on the grid and segmentation families.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="problem" aria-labelledby="h-problem">
+  <div class="wrap">
+    <h2 id="h-problem">A bound is only useful if it is never wrong</h2>
+    <div class="cols">
+      <div class="prose">
+        <p>Many uses of probabilistic graphical models ask closely related questions again and again on one fixed graph. Branch-and-bound search expands one node per query, robustness certification verifies one input per query, constrained planning evaluates one constraint per query, and bound-based learning computes a new bound at every gradient step. Each query needs an upper bound on the MAP value, the score of the most probable assignment.</p>
+        <p>Classical dual methods such as JGLP always return a valid bound, but they often need hundreds of coordinate-descent iterations per query to make it tight. A neural network answers in a fraction of a millisecond, but a learned bound is usually valid only statistically. That is not enough. If a predicted bound falls below the true optimum on even a small fraction of queries, branch-and-bound can prune the optimal solution and a robustness certificate stops being a certificate. Conformal calibration adds a safety margin estimated on held-out data and still permits violations at its target rate. Learned search heuristics and inference networks speed up a solver or approximate its answer, but they do not certify a bound for every query.</p>
+        <p>Neural Dual Bounds removes the tradeoff by changing what the network predicts.</p>
+      </div>
+      <aside class="side" aria-label="Terms">
+        <dl>
+          <div><dt>MAP.</dt> <dd>The most probable joint assignment of all variables. Its log-score is \(\mathrm{MAP}^*\).</dd></div>
+          <div><dt>Upper bound.</dt> <dd>A number guaranteed to be at least \(\mathrm{MAP}^*\). The tighter it is, the more a search can discard.</dd></div>
+          <div><dt>JGLP.</dt> <dd>Join-graph linear programming (Ihler et al., 2012), which tightens a mini-bucket bound by shifting cost between clusters, one edge at a time.</dd></div>
+        </dl>
+        <p class="ref">In the paper: Section 1.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="idea" aria-labelledby="h-idea">
+  <div class="wrap">
+    <h2 id="h-idea">The network predicts messages, not bounds</h2>
+    <div class="cols">
+      <div class="prose">
+        <p>A mini-bucket decomposition splits the model into small clusters \(C_\alpha\) that overlap on shared variables. Maximizing each cluster on its own and adding the results gives an upper bound, because a sum of maxima is at least the maximum of the sum. The bound is loose when neighboring clusters prefer different values of a variable they share.</p>
+        <p>Cost shifting tightens it. A message \(\lambda_{\alpha\beta}\) on the separator between two clusters is added to one and subtracted from the other:</p>
+        <div class="eq">\[\begin{gathered}\theta_{C_\alpha}(x_{C_\alpha}, \lambda) = \theta_{C_\alpha}(x_{C_\alpha}) + \sum_{\beta \in N(\alpha)} \lambda_{\alpha\beta}(x_{S_{\alpha\beta}}), \\[6pt] \lambda_{\alpha\beta}(x_S) + \lambda_{\beta\alpha}(x_S) = 0 \ \text{ on every edge, for every } x_S.\end{gathered}\]</div>
+        <p>For any complete assignment the two contributions cancel, so the model is unchanged, but the per-cluster maxima move. The reparameterized bound is valid for every antisymmetric \(\lambda\):</p>
+        <div class="eq">\[D(\theta, \lambda) = \sum_{\alpha} \max_{x_{C_\alpha}} \theta_{C_\alpha}(x_{C_\alpha}, \lambda) \;\ge\; \mathrm{MAP}^*.\]</div>
+        <p>Our network outputs one real number per edge and separator assignment, a vector \(m \in \mathbb{R}^{e_{\dim}}\). A fixed sparse matrix \(A\) with entries in \(\{-1, 0, +1\}\), determined by the join graph alone, writes each number into one cluster with a plus sign and into its neighbor with a minus sign, \(\theta' = \theta + Am\). The antisymmetry lives in \(A\), not in the weights, so training never has to enforce feasibility and nothing has to be checked afterwards. Trained, untrained and adversarial outputs all give valid bounds. Training only decides how tight they are.</p>
+      </div>
+      <aside class="side">
+        <p class="ref">In the paper: Sections 2 and 3, Proposition 1, Figure 2 and the notation table in Appendix A.</p>
+        <dl>
+          <div><dt>Join graph.</dt> <dd>Clusters of at most \(i+1\) variables (the i-bound), joined by an edge wherever two clusters share variables. The shared set is the separator.</dd></div>
+          <div><dt>\(e_{\dim}\).</dt> <dd>The number of (edge, separator assignment) pairs, and the size of the network's output. In our benchmarks it is about half the number of cluster-table entries.</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <figure class="fig" aria-labelledby="flow-title">
+      <figcaption><span class="fig-title" id="flow-title">Only the first step is learned. The steps that make the output a bound are fixed.</span></figcaption>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-kind">Input</div><div class="flow-box"><b>Evidence, cluster tables</b><span>\(e\) and \(\theta\)</span></div></div>
+        <div class="flow-step learned"><div class="flow-kind">Learned</div><div class="flow-box"><b>MLP \(f_\phi\)</b><span>outputs messages \(m\)</span></div></div>
+        <div class="flow-step"><div class="flow-kind">Fixed by the join graph</div><div class="flow-box"><b>Antisymmetric scatter</b><span>\(\theta' = \theta + Am\)</span></div></div>
+        <div class="flow-step"><div class="flow-kind">Fixed, no parameters</div><div class="flow-box"><b>Sum of cluster maxima</b><span>\(D = \sum_\alpha \max\,\theta'_{C_\alpha}\)</span></div></div>
+        <div class="flow-step out"><div class="flow-kind">Output</div><div class="flow-box"><b>Upper bound</b><span>\(D \ge \mathrm{MAP}^*\) for any weights</span></div></div>
+      </div>
+    </figure>
+
+    <div class="cols">
+      <div>
+        <div class="prop">
+          <h3>Proposition 1</h3>
+          <p>For every temperature \(\tau > 0\) and every message vector, the smooth surrogate used for training is itself an upper bound: \[\begin{gathered}D_\tau(\theta, \lambda) \;\ge\; D(\theta, \lambda) \;\ge\; \mathrm{MAP}^*, \\[4pt] 0 \;\le\; D_\tau - D \;\le\; \tau \sum_{\alpha} \log n_\alpha,\end{gathered}\] where \(D_\tau\) replaces each max by \(\tau \log \sum \exp(\cdot/\tau)\) and \(n_\alpha\) is the number of configurations of cluster \(\alpha\).</p>
+          <p class="why">Why: fix any complete assignment. Each edge adds \(\lambda_{\alpha\beta}\) to one cluster and \(\lambda_{\beta\alpha}\) to the other at the same separator values, so the pair cancels and the total equals the original score. Replacing each cluster term by its maximum can only increase the sum. Neither step uses any property of the network.</p>
+        </div>
+      </div>
+      <aside class="side"><p class="ref">The surrogate gap is \(O(\tau)\), which is why annealing \(\tau\) during training is safe.</p></aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="example" aria-labelledby="h-example">
+  <div class="wrap">
+    <h2 id="h-example">Try to push the bound below the optimum</h2>
+    <div class="cols">
+      <div class="prose">
+        <p>This is the worked example from the paper: four binary variables in three clusters, chained by the shared variables \(x_1\) and \(x_2\). The true optimum is 17. With no messages the bound is 19, because the clusters disagree about \(x_1\) and \(x_2\), and that disagreement is the gap of 2.</p>
+        <p>Move the four messages or scramble them. Each one is taken from one cluster and given to its neighbor. The outlined entries belong to the optimal assignment and always add up to 17, so the three maxima can never add up to less.</p>
+      </div>
+      <aside class="side"><p class="ref">In the paper: Appendix A.2, Table 5. There, 2,000 message vectors drawn from a Gaussian with standard deviation 10 produced no violation and no bound below 17.</p></aside>
+    </div>
+
+    <figure class="fig" aria-labelledby="lab-title">
+      <figcaption><span class="fig-title" id="lab-title">Three clusters, two shared variables, four messages</span><span class="fig-sub">Large numbers are the reparameterized tables \(\theta' = \theta + Am\). Small numbers are the original entries.</span></figcaption>
+      {{lab}}
+      <p class="lab-key"><span><i class="k-max"></i>largest entry in its cluster</span><span><i class="k-opt"></i>entry of the optimal assignment (1, 1, 1, 1)</span></p>
+      <dl class="verdict" aria-live="polite">
+        <div><dt>The bound: three cluster maxima added</dt><dd><span id="v-sum">{{lab.sum}}</span><span class="state" id="v-state">{{lab.state}}</span></dd></div>
+        <div><dt>The optimal assignment's three entries</dt><dd><span id="v-opt">{{lab.opt}}</span><small>always 17</small></dd></div>
+        <div><dt>Complete assignments that keep their score</dt><dd id="v-inv">16 of 16</dd></div>
+      </dl>
+      <div class="lab-ctl needs-js">
+        <button type="button" class="btn btn-sm" id="lab-scramble">Scramble the messages</button>
+        <button type="button" class="btn btn-sm" id="lab-zero">Remove the messages</button>
+        <button type="button" class="btn btn-sm" id="lab-paper">Use the paper's messages</button>
+      </div>
+      <p class="fig-note">With the paper's messages, \(m = (-3, -2, -2, -3)\), every cluster maximum moves and the bound becomes exact: \(9 + 7 + 1 = 17\).</p>
+    </figure>
+  </div>
+</section>
+
+<section class="sec" id="validity" aria-labelledby="h-validity">
+  <div class="wrap">
+    <h2 id="h-validity">Tested against an exact solver, with inputs built to fail</h2>
+    <div class="cols">
+      <div class="prose">
+        <p>The guarantee is a theorem, so a single counterexample would falsify it. We tested it where an exact reference exists. For each of {{val.q}} benchmark queries we computed the optimum of the join-graph dual with an independent LP solver, then bounded the query with six different message sources: no messages, the trained network, an untrained network, the trained messages negated and scaled by five, Gaussian noise at ten times the trained scale, and values of \(\pm 10^4\). The last three are deliberate attempts to produce an invalid bound.</p>
+        <p>All {{val.net}} bounds produced from a network or from noise sit strictly above the optimum. The adversarial sources are valid by a wide margin precisely because they are loose: they cannot break the bound, only waste it. The only margins that are not positive are {{val.zero}} cases with no messages at all, on the three models where the mini-bucket bound coincides with the LP optimum, and they are at floating-point level.</p>
+      </div>
+      <aside class="side"><p class="ref">In the paper: Appendix B.22, Table 29. The same run checks the reparameterization directly: over 153,408 random complete assignments, no total score moved by more than \(2.5 \times 10^{-10}\).</p></aside>
+    </div>
+    <figure class="fig" aria-labelledby="val-title">
+      <figcaption><span class="fig-title" id="val-title">{{val.all}} bounds, six message sources, none below the LP optimum beyond rounding</span><span class="fig-sub">Margin is the bound minus the exact optimum of the relaxation, \(D - D^{\mathrm{LP}}\). It must not be negative.</span></figcaption>
+      <div class="table-wrap">{{table:validity}}</div>
+      <p class="fig-src">Source: Table 29. Queries are the {{val.q}} (model, evidence seed) pairs of the 100-seed MAP evaluation.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="sec" id="training" aria-labelledby="h-training">
+  <div class="wrap">
+    <h2 id="h-training">Trained on the bound itself, with no labels and no solver in the loop</h2>
+    <div class="cols">
+      <div class="prose">
+        <p>Because every output is feasible, the bound can be the loss. We replace the hard max with the log-sum-exp surrogate \(D_\tau\), which is differentiable and, by Proposition 1, still an upper bound, and minimize it directly over sampled evidence configurations. There are no optimal messages to generate, no LP solves and no JGLP runs during training, and a single backward pass through the smooth dual gives the gradient.</p>
+        <p>Two design choices matter more than the network's size. Predicting edge messages instead of cluster tables keeps the output in the valid subspace: with edge messages the network's bound beat the mini-bucket bound on 94% of test instances, and with direct cluster-table prediction on none. Training on the bound also beat regressing onto JGLP's messages, 94% against 72% on BN_12.</p>
+        <p>For constrained MAP we report two training routes. One supervises the network with LP-optimal messages for each Lagrangian. The other uses the same smooth dual with no LP in the loop, and it gave similar bound quality in a six-model pilot (Appendices B.20 and B.28).</p>
+      </div>
+      <aside class="side"><p class="ref">In the paper: Section 3 and Section 4.1. Training cost and the architecture and training-set sweeps are in Appendix B.27.</p></aside>
+    </div>
+    <dl class="facts">
+      <div><dt>Model</dt><dd>Three-layer MLP with LayerNorm and GELU, 512, 512 and 256 hidden units, one per join graph</dd></div>
+      <div><dt>Input and output</dt><dd>Evidence encoding in, \(e_{\dim}\) edge messages out</dd></div>
+      <div><dt>Optimization</dt><dd>AdamW with cosine annealing, 500 gradient steps at batch size 16, \(\tau\) annealed from 0.01 to 0.001</dd></div>
+      <div><dt>Training data</dt><dd>Evidence configurations with 10 to 90% of variables observed, sampled fresh, with no inference labels</dd></div>
+      <div><dt>Training time</dt><dd>About 2.5 to 6.5 minutes per graph on the three models timed</dd></div>
+      <div><dt>Query time</dt><dd>0.23 to 0.39 ms per forward pass on a CPU, against 1.6 to 131 ms for one JGLP iteration</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="map" aria-labelledby="h-map">
+  <div class="wrap">
+    <h2 id="h-map">For MAP, the warm start buys the first iterations</h2>
+    <div class="cols">
+      <div class="prose">
+        <p>We evaluate on 15 models from the UAI 2022 inference competition, covering Bayesian networks, image segmentation and grid Markov random fields, all at i-bound 4. The reference is \(D^{\mathrm{LP}}\), the exact optimum of the join-graph dual solved as a linear program, because JGLP's coordinate descent can stop short of it. Every gap below is measured to that optimum.</p>
+      </div>
+      <aside class="side"><p class="ref">In the paper: Section 4.1, Figure 1 and Table 1. The LP formulation is in Appendix B.1.</p></aside>
+    </div>
+
+    <figure class="fig" aria-labelledby="conv-title">
+      <figcaption><span class="fig-title" id="conv-title">Started from the network's bound, JGLP is ahead from the first iteration</span><span class="fig-sub">The bound \(D(\theta, m)\) on one instance from each family over 200 JGLP iterations. Lower is tighter. Figure 1 of the paper, redrawn from its curves.</span></figcaption>
+      <div class="fig-tools">
+        <ul class="legend">
+          <li><span class="key-line ctx"></span>JGLP from zero initialization</li>
+          <li><span class="key-line"></span>JGLP from the neural warm start</li>
+          <li><span class="key-dot"></span>the forward pass alone, before any iteration</li>
+        </ul>
+      </div>
+      <div class="multi">
+        {{convs}}
+      </div>
+      <details class="tableview"><summary>View as table</summary><div class="table-wrap">{{table:conv}}</div></details>
+      <p class="fig-src">Values are read from the vector curves of Figure 1 in the camera-ready paper.</p>
+    </figure>
+
+    <div class="cols">
+      <div class="prose">
+        <p>One instance is an illustration. For the evidence, both starts were run on the same 100 evidence seeds per model, and the comparison is paired: for each seed we take the ratio of the two dual gaps, then report its median with a bootstrap interval and a Wilcoxon signed-rank test, Holm-corrected across models.</p>
+      </div>
+      <aside class="side"><p class="ref">In the paper: Appendix B.24, Tables 31 and 32. Segmentation_14's median settles at 6.3× when the seed count is raised to 1,000 (Appendix B.17).</p></aside>
+    </div>
+
+    <figure class="fig" aria-labelledby="forest-title">
+      <figcaption><span class="fig-title" id="forest-title">{{forest.title1}}</span><span class="fig-sub">Median over seeds of the per-seed ratio of dual gaps, zero init over warm start, with 95% bootstrap intervals. {{map.models}} models, 100 seeds each.</span></figcaption>
+      <div class="fig-tools">
+        <div class="seg needs-js" data-seg="forest" role="group" aria-label="Checkpoint">
+          <button type="button" aria-pressed="false" data-v="0" data-title="{{forest.title0}}" data-note="{{forest.note0}}">Forward pass only</button>
+          <button type="button" aria-pressed="true" data-v="1" data-title="{{forest.title1}}" data-note="{{forest.note1}}">Iteration 10</button>
+          <button type="button" aria-pressed="false" data-v="2" data-title="{{forest.title2}}" data-note="{{forest.note2}}">Iteration 50</button>
+        </div>
+        <ul class="legend">
+          <li><span class="key-dot"></span>warm start significantly tighter</li>
+          <li><span class="key-dot ctx"></span>zero init significantly tighter</li>
+          <li><span class="key-ring"></span>not significant</li>
+        </ul>
+      </div>
+      <div class="plot" data-chart="forest">{{forest}}</div>
+      <p class="fig-note" id="forest-note">{{forest.note1}}</p>
+      <details class="tableview"><summary>View as table, all five checkpoints</summary><div class="table-wrap">{{table:forest}}</div></details>
+      <p class="fig-src">Source: Tables 31 and 32. Significance is a two-sided Wilcoxon signed-rank test at 0.05 after Holm correction. A seed is won or tied when the warm start's gap is no larger than zero init's. The suite has 16 rows for 15 distinct models, because one UAI file ships under two names; the duplicate row is in the table but not in the chart. All MAP numbers use the corrected evaluation pipeline of Appendix B.24.</p>
+    </figure>
+
+    <div class="cols">
+      <div class="prose">
+        <p>The gain is concentrated early. Both runs descend the same convex objective, so the warm start changes the shape of the first few tens of iterations rather than the converged bound, and by iteration 500 the two agree to within a few percent. Those early iterations are what a branch-and-bound node expansion spends, and a forward pass costs a fraction of one JGLP iteration, so the prediction is recovered whenever it saves one.</p>
+      </div>
+      <aside class="side"><p class="ref">Both starts are valid bounds, so a solver can also begin from whichever is lower. That gated start is never worse at iteration 0 and chose the network on 56% of instances (Appendix B.26).</p></aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="cmpe" aria-labelledby="h-cmpe">
+  <div class="wrap">
+    <h2 id="h-cmpe">For constrained MAP, adaptation wins where the problem keeps moving</h2>
+    <div class="cols">
+      <div class="prose">
+        <p>Constrained MAP asks for the most probable assignment subject to budgets defined by other models on the same graph, which covers safety, fairness, adversarial and resource-constrained reasoning. Its Lagrangian relaxation is a sequence of MAP bounds: projected gradient descent on the multipliers \(\mu \ge 0\), with one inner bound per step.</p>
+        <div class="eq">\[L(\mu) = \max_x \Big[ \sum_{\alpha} \theta_\alpha(x_\alpha) - \sum_{k=1}^{K} \mu_k \Big( \sum_{\alpha} \theta^k_\alpha(x_\alpha) - q_k \Big) \Big].\]</div>
+        <p>A hundred multiplier steps means a hundred closely related queries on one graph, and with several constraints the multiplier is a vector, which earlier bounding methods for this task do not handle directly. We condition the network on \(\mu\) and compare four ways to start each inner solve.</p>
+      </div>
+      <aside class="side">
+        <p class="ref">In the paper: Section 4.2, Tables 2 and 3, and the algorithm listings in Appendix B.</p>
+        <dl>
+          <div><dt>JGLP.</dt> <dd>Start every step from zero.</dd></div>
+          <div><dt>NN.</dt> <dd>Start from a frozen network's prediction.</dd></div>
+          <div><dt>JGLP+WS.</dt> <dd>Start from the previous step's converged messages. No learning.</dd></div>
+          <div><dt>NN+TTA.</dt> <dd>Start from a network that is fine-tuned after every step on a replay buffer of up to 20 earlier steps, with the same self-supervised loss.</dd></div>
+        </dl>
+        <p>Each constraint model adds Gaussian noise (\(\sigma = 0.5\)) to the original log-potentials, and its budget is the 80th percentile of its score on the test sample.</p>
+      </aside>
+    </div>
+
+    <figure class="fig" aria-labelledby="cmpe-title">
+      <figcaption><span class="fig-title" id="cmpe-title">{{cmpe.title}}</span><span class="fig-sub">Mean gap to the LP optimum of the Lagrangian bound at a fixed inner-iteration budget, two constraints, 50 seeds and 100 multiplier steps per model. Log scale, lower is tighter.</span></figcaption>
+      <div class="fig-tools">
+        <div class="seg needs-js" data-seg="cmpe" role="group" aria-label="Inner JGLP iterations">
+          <button type="button" aria-pressed="true" data-v="0" data-title="{{cmpe.title}}" data-note="{{cmpe.note0}}">10 iterations</button>
+          <button type="button" aria-pressed="false" data-v="1" data-title="{{cmpe.title}}" data-note="{{cmpe.note1}}">50 iterations</button>
+          <button type="button" aria-pressed="false" data-v="2" data-title="{{cmpe.title}}" data-note="{{cmpe.note2}}">100 iterations</button>
+        </div>
+        <ul class="legend">
+          <li><span class="key-dot"></span>NN+TTA, adapted network</li>
+          <li><span class="key-ring"></span>JGLP+WS, reuse the previous step</li>
+          <li><span class="key-dot ctx"></span>JGLP from zero</li>
+        </ul>
+      </div>
+      <div class="plot" data-chart="cmpe">{{cmpe}}</div>
+      <p class="fig-note" id="cmpe-note">{{cmpe.note0}}</p>
+      <details class="tableview"><summary>View as table, all four methods and three budgets</summary><div class="table-wrap">{{table:cmpe}}</div></details>
+      <p class="fig-src">Source: Tables 2 and 3. The chart shows the 14 distinct models; the table also lists the duplicate row and the frozen network.</p>
+    </figure>
+
+    <div class="cols">
+      <div class="prose">
+        <p>The adaptation is there for a reason. Offline training samples multipliers between 0 and 1, but gradient descent at test time is unconstrained above: {{tta.k1}}% of single-constraint queries and {{tta.k2}}% of two-constraint queries land beyond 1, with maxima of 36.1 and 19.4. A frozen network there predicts messages fitted to a different Lagrangian. The bound stays valid but loosens, and the replay buffer refits the network to where the trajectory has actually been.</p>
+        <p>Paired per seed, NN+TTA beats the strongest non-learned baseline on every grid and segmentation model, by a median of {{p2.lo}} to {{p2.hi}} orders of magnitude at 10 inner iterations with two constraints and {{p1.lo}} to {{p1.hi}} with one. On Bayesian networks, where successive multiplier steps have nearby optima, carrying the previous solution forward is comparable with two constraints and better by three to four orders of magnitude with one. Against plain zero-initialized JGLP, the adapted network is tighter on every non-degenerate model, by roughly an order of magnitude at 50 inner iterations on the Bayesian-network and segmentation models.</p>
+      </div>
+      <aside class="side"><p class="ref">In the paper: paired statistics in Appendix B.25, Table 33. The single-constraint results are in Table 24. Zero initialization wins only on the two degenerate grid40×40 models.</p></aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="limits" aria-labelledby="h-limits">
+  <div class="wrap">
+    <h2 id="h-limits">Where it helps and where it does not</h2>
+    <div class="cols">
+      <div class="prose"><p>The paper states the scope of its claims directly, including two negative results. So does this page.</p></div>
+      <aside class="side"><p class="ref">In the paper: Section 6, Limitations and Outlook, with the supporting experiments in Appendix B.</p></aside>
+    </div>
+    <ul class="limits">
+      <li><h3>One network per graph</h3><p>The MLP is tied to a join graph. A new topology, or the same graph at a different i-bound, needs retraining, so the amortization is over repeated queries on a fixed graph. A graph neural network over the join graph keeps the guarantee on graphs it has never seen, but ours was not tight on them: it improved on the mini-bucket start on 0 of 54 held-out instances. Cross-topology transfer is the main open problem.</p><span class="ref">Section 6 and Appendix B.30</span></li>
+      <li><h3>Early iterations only</h3><p>Both starts descend the same convex objective to the same optimum. The warm start buys the first few tens of iterations, not the converged bound, and at tight tolerances zero initialization often gets there first.</p><span class="ref">Section 6, Tables 15 and 31</span></li>
+      <li><h3>Nothing to gain on degenerate models</h3><p>Where the mini-bucket bound already sits at the LP optimum, as on grid10×10 and grid40×40.f2, no reparameterization can improve it and the network cannot help.</p><span class="ref">Sections 4.1 and 6</span></li>
+      <li><h3>Wall-clock dominance is not the claim</h3><p>Counting the one-off training, a frozen network pays for itself at a practical query count only on the four Bayesian networks, after 3,215 to 26,968 queries at a \(10^{-2}\) target. Test-time adaptation costs 63 to 276 ms per step and repays that only on a large model at a loose target. The claim is bound quality at a fixed iteration budget.</p><span class="ref">Appendix B.6, Tables 14 and 15</span></li>
+      <li><h3>Reusing the last solution is hard to beat on Bayesian networks</h3><p>When successive multiplier steps have nearby optima, the previous step's messages are already a good start. The learned prior dominates where the trajectory drifts. Adding the two together directly was worse than either alone on all 24 benchmarks tried, although the bound stayed valid.</p><span class="ref">Section 6 and Appendix B.23</span></li>
+      <li><h3>More data and bigger networks do not help much</h3><p>The iteration-10 gain is already saturated with 10 training configurations. Across an 18-fold range in parameter count it varies by at most 0.385 orders of magnitude within a model, and by more than a full order between models. The network does not reach the optimal bound even on its own training instances, so the limit is the message predictor, not the data.</p><span class="ref">Appendix B.27, Tables 35 to 39</span></li>
+    </ul>
+    <div class="also">
+      <h3>Also in the appendix</h3>
+      <ul>
+        <li><b>Adaptation needs a trajectory.</b> On independent MAP queries, replay-buffer adaptation gave marginal to no benefit (B.19).</li>
+        <li><b>Constrained MAP without an LP.</b> In a six-model pilot, a pipeline trained only on the smooth dual matched or exceeded the LP-supervised one on the four non-degenerate models (B.20, B.28).</li>
+        <li><b>A root bound for search.</b> At the root of AND/OR branch-and-bound, the forward pass was tighter than the mini-bucket bound on most queries (B.8).</li>
+        <li><b>Eleven ablations.</b> Loss weighting, gradient steps, replay size, architecture, target type and multiplier range (B.13).</li>
+        <li><b>Seed stability.</b> Raising five models from 100 to 1,000 seeds moved one estimate materially, Seg_14's median effect, from 8.6× to 6.3× (B.17).</li>
+        <li><b>Double precision matters.</b> In single precision the antisymmetric cancellation carries an error of about \(10^{-7}\), which dominates near convergence (B.29).</li>
+        <li><b>Not monotone in the evidence.</b> The network predicts messages, not bound values, and its bound does not move monotonically as variables are observed (B.9).</li>
+        <li><b>Evidence encoding.</b> One scalar per variable. One-hot encoding is the principled extension for categorical variables (B.14).</li>
+        <li><b>An adversarial image pilot.</b> Constrained MAP on a FashionMNIST classifier ran cleanly but was degenerate, so it shows applicability, not a speedup (B.12).</li>
+        <li><b>Full benchmark suite.</b> Forty rows, 36 distinct models, including Promedas and protein-folding networks, with per-row settings (B.2, B.10).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="beyond" aria-labelledby="h-beyond">
+  <div class="wrap">
+    <h2 id="h-beyond">The construction is not specific to JGLP</h2>
+    <div class="cols">
+      <div class="prose">
+        <p>Any Lagrangian dual whose decomposition passes antisymmetric messages admits the same parameterization. That includes dual decomposition, TRW-BP, weighted constraint satisfaction, and minimum-cost flow, where the LP dual already carries antisymmetric variables on edges. In each case the architecture and the self-supervised loss stay the same and only the scatter matrix \(A\) changes. Our experiments cover the graphical-model benchmarks above; the other settings are structural observations, not results.</p>
+      </div>
+      <aside class="side"><p class="ref">In the paper: Section 6, Beyond JGLP.</p></aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec abstract" id="paper" aria-labelledby="h-abstract">
+  <div class="wrap">
+    <h2 id="h-abstract">Abstract</h2>
+    <div class="cols">
+      <div>
+        <p>We present Neural Dual Bounds, a calibration-free framework that produces deterministic upper bounds for MAP inference in probabilistic graphical models using a single neural-network forward pass. The framework trains a network to output the edge messages of a mini-bucket style upper bound on a given join-graph decomposition in a self-supervised manner by directly minimizing a smooth dual objective. The output of this network can be used at test time to warm-start a standard JGLP optimizer. Across diverse benchmarks, this warm start yields dual gaps that are orders of magnitude tighter than those from zero initialization, with the largest gains in the early-iteration regime. We also apply our framework for the constrained MAP (CMPE) task, where neural warm starts with test-time adaptation are comparable to the adaptive baseline on Bayesian networks and achieve the tightest dual gaps, by one to two orders of magnitude, on the grid and segmentation families.</p>
+        <ul class="res">
+          <li><b>Paper</b><span><a href="{{pdf}}">Camera-ready PDF</a>, 46 pages with the appendix. Licensed CC BY 4.0.</span></li>
+          <li><b>NeurIPS</b><span><a href="https://neurips.cc/virtual/2026/poster/150753" target="_blank" rel="noopener">Poster page on neurips.cc</a>. Poster session on December 10, 2026 in Atlanta.</span></li>
+          <li><b>Code</b><span>Included in the paper's supplementary material.</span></li>
+          <li><b>Contact</b><span><a href="../#contact">Akshay Vyas</a></span></li>
+        </ul>
+      </div>
+      <aside class="paper-card"><a href="{{pdf}}" aria-label="Open the paper (PDF)"><img src="paper-first-page.jpg" width="{{thumb.w}}" height="{{thumb.h}}" alt="First page of the paper, with title, authors and abstract." loading="lazy"></a></aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="cite" aria-labelledby="h-cite">
+  <div class="wrap">
+    <h2 id="h-cite">Cite this paper</h2>
+    <div class="bib"><pre id="bibtex">@inproceedings{vyas2026neural,
+  title     = {Neural Dual Bounds: Valid-by-Construction {JGLP}
+               Warm-Starts for {MAP} and Constrained {MAP}},
+  author    = {Vyas, Akshay and Arya, Shivvrat and Malhotra, Brij
+               and Rahman, Tahrima and Gogate, Vibhav
+               and Ruozzi, Nicholas},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2026}
+}</pre><button type="button" class="btn btn-sm needs-js" data-copy-from="bibtex">Copy BibTeX</button></div>
+    <p class="ack">This work was funded in part by the DARPA ANSR, CODORD, and CLARA programs under Awards FA8750-23-2-0004, HR00112590089, and HR0011269E224, respectively, and by the NSF grant 2327245.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot"><div class="wrap"><span>© 2026 the authors. Page by <a href="../">Akshay Vyas</a>.</span><span>Updated November 2026.</span></div></footer>
+
+<script type="application/json" id="ndb-data">{{data}}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "Neural Dual Bounds: Valid-by-Construction JGLP Warm-Starts for MAP and Constrained MAP",
+  "author": [
+    { "@type": "Person", "name": "Akshay Vyas", "url": "https://akshay25vyas.github.io/" },
+    { "@type": "Person", "name": "Shivvrat Arya" },
+    { "@type": "Person", "name": "Brij Malhotra" },
+    { "@type": "Person", "name": "Tahrima Rahman" },
+    { "@type": "Person", "name": "Vibhav Gogate" },
+    { "@type": "Person", "name": "Nicholas Ruozzi" }
+  ],
+  "datePublished": "2026",
+  "isPartOf": { "@type": "PublicationEvent", "name": "40th Conference on Neural Information Processing Systems (NeurIPS 2026)" },
+  "url": "https://akshay25vyas.github.io/neural-dual-bounds/",
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}
+</script>
+<script>
+{{viz}}
+{{model}}
+{{app}}
+</script>
+</body>
+</html>
