@@ -72,6 +72,9 @@ async function run(label, viewport, colorScheme) {
   const anchors = links.filter((h) => h.startsWith("#")); const missing = [];
   for (const a of new Set(anchors)) if (!(await page.locator(a).count())) missing.push(a);
   ok(label + " in-page anchors resolve", missing.length === 0, missing.join(","));
+  // video: the hero button and the resources row carry the same outside address and open in a new tab
+  const vid = await page.evaluate(() => [".actions a", ".res a"].map((s) => { const a = [...document.querySelectorAll(s)].find((a) => /video/i.test(a.textContent)); return a ? [a.href, a.target, a.rel, a.getBoundingClientRect().width > 0] : null; }));
+  ok(label + " video links", vid.every(Boolean) && vid[0][0] === vid[1][0] && vid.every((v) => /^https:\/\/\S+$/.test(v[0]) && v[1] === "_blank" && v[2] === "noopener" && v[3]), vid[0] ? vid[0][0] : "none");
   ok(label + " no console errors", errs.length === 0, errs.join(" || ").slice(0, 300));
   await ctx.close();
   return links;

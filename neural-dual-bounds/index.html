@@ -466,6 +466,7 @@ html:not(.js) .needs-js { display: none !important; }
         <p class="lede">A neural network that predicts upper bounds for MAP inference, built so that every output is a valid bound. One forward pass gives a certificate that holds whatever the weights are, and it gives the classical JGLP solver a head start.</p>
         <div class="actions">
           <a class="btn btn-primary" href="Neural_Dual_Bounds_NeurIPS_2026.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg>Paper (PDF)</a>
+          <a class="btn" href="https://recorder-v3.slideslive.com/?share=115623&amp;s=d3f4f6d9-5b10-481e-86d6-8b44aef29d86" target="_blank" rel="noopener" title="Video presentation recorded for NeurIPS 2026, on SlidesLive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l14 9-14 9V3Z"/></svg>Video</a>
           <a class="btn" href="https://neurips.cc/virtual/2026/poster/150753" target="_blank" rel="noopener">NeurIPS page</a>
           <a class="btn" href="#cite">Cite</a>
         </div>
@@ -803,6 +804,7 @@ html:not(.js) .needs-js { display: none !important; }
         <p>We present Neural Dual Bounds, a calibration-free framework that produces deterministic upper bounds for MAP inference in probabilistic graphical models using a single neural-network forward pass. The framework trains a network to output the edge messages of a mini-bucket style upper bound on a given join-graph decomposition in a self-supervised manner by directly minimizing a smooth dual objective. The output of this network can be used at test time to warm-start a standard JGLP optimizer. Across diverse benchmarks, this warm start yields dual gaps that are orders of magnitude tighter than those from zero initialization, with the largest gains in the early-iteration regime. We also apply our framework for the constrained MAP (CMPE) task, where neural warm starts with test-time adaptation are comparable to the adaptive baseline on Bayesian networks and achieve the tightest dual gaps, by one to two orders of magnitude, on the grid and segmentation families.</p>
         <ul class="res">
           <li><b>Paper</b><span><a href="Neural_Dual_Bounds_NeurIPS_2026.pdf">Camera-ready PDF</a>, 46 pages with the appendix. Licensed CC BY 4.0.</span></li>
+          <li><b>Video</b><span><a href="https://recorder-v3.slideslive.com/?share=115623&amp;s=d3f4f6d9-5b10-481e-86d6-8b44aef29d86" target="_blank" rel="noopener">Video presentation on SlidesLive</a>, recorded for NeurIPS 2026.</span></li>
           <li><b>NeurIPS</b><span><a href="https://neurips.cc/virtual/2026/poster/150753" target="_blank" rel="noopener">Poster page on neurips.cc</a>. Poster session on December 10, 2026 in Atlanta.</span></li>
           <li><b>Code</b><span>Included in the paper's supplementary material.</span></li>
           <li><b>Contact</b><span><a href="../#contact">Akshay Vyas</a></span></li>
