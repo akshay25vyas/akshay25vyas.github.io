@@ -13,10 +13,15 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const read = (p) => fs.readFileSync(path.join(here, p), "utf8");
 const outDir = path.resolve(process.argv[2] || path.join(here, "out/neural-dual-bounds"));
 const PDF_NAME = "Neural_Dual_Bounds_NeurIPS_2026.pdf";
+// The video presentation recorded for NeurIPS, used by the hero button and the resources list.
+// This is the share link from the SlidesLive recorder. When the talk has a public page in the
+// SlidesLive library or on neurips.cc, put that address here and rebuild.
+const VIDEO_URL = "https://recorder-v3.slideslive.com/?share=115623&s=d3f4f6d9-5b10-481e-86d6-8b44aef29d86";
 
 const V = require("./src/viz.js"), M = require("./src/model.js");
 const D = JSON.parse(read("data/page-data.json"));
 const check = (cond, msg) => { if (!cond) throw new Error("check failed: " + msg); };
+check(/^https:\/\/[^\s"'<>]+$/.test(VIDEO_URL), "the video address is one https URL");
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const MINUS = "−", TIMES = "×";
 
@@ -60,7 +65,7 @@ check(start.st.below === 0 && start.st.n === 300 && M.MAP.value === 17 && M.eval
 { const r = M.rng(7); for (let i = 0; i < 200000; i++) { const m = [0, 0, 0, 0].map(() => Math.round((r() - 0.5) * 200)); const e = M.evaluate(m); check(e.D >= 17 && M.unchanged(e.t) === 16, "bound below the optimum for m = " + m); } }
 
 const T = {
-  pdf: PDF_NAME, spot: "292", subs: "30,709", spotpct: (292 / 30709 * 100).toFixed(2),
+  pdf: PDF_NAME, video: VIDEO_URL, spot: "292", subs: "30,709", spotpct: (292 / 30709 * 100).toFixed(2),
   "val.q": "1,598", "val.net": "7,990", "val.all": "9,588", "val.zero": "53",
   "map.models": "15", "map.pos10": String(N.pos10),
   "hist.n": String(start.st.n), "hist.below": String(start.st.below), "hist.exact": String(start.st.exact),

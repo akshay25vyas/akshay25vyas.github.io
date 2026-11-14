@@ -34,6 +34,15 @@ Live at https://akshay25vyas.github.io/neural-dual-bounds/. This is the address 
 
 The homepage links to it from the Nov 2026 news item, from the PDF and Project page buttons on the paper under Publications, and from the links under "Learned inference with guarantees" in Research.
 
+### The video presentation
+
+The video recorded for NeurIPS is linked from those same three places on the homepage (the news item, the Video button on the paper, the links under Research) and from the project page (the Video button at the top and the Video row under the abstract).
+
+The address is the share link from the SlidesLive recorder. When the talk has a public page in the SlidesLive library or on neurips.cc, swap the address:
+
+1. In `index.html`, search for `slideslive` and replace the address in all three places. Inside HTML, write `&` as `&amp;`.
+2. In `neural-dual-bounds/_src/build.mjs`, change `VIDEO_URL` near the top and rebuild (see `_src/README.md`). The project page is generated, so do not edit its `index.html` by hand.
+
 ## Add your photo and CV
 
 Both are optional and switch on by themselves once the file exists. Upload them to the top level of the repository with Add file, then Upload files.

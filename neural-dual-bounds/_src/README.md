@@ -40,14 +40,15 @@ Table numbers are hard-coded in `parse_tables.py` (Tables 1, 2, 3, 16, 18, 22, 2
 ## Test
 
     python3 -m http.server 8765 --bind 127.0.0.1     # from the repository root
-    node test/interact.mjs                           # 60 checks on desktop, phone and dark
+    node test/interact.mjs                           # 63 checks on desktop, phone and dark
     node og.mjs .. http://127.0.0.1:8765             # regenerate the link preview
 
 The tests and `og.mjs` need Playwright. Set `CHROME_PATH` to use a specific browser binary. The test saves screenshots of each state to `shots/`, which git ignores.
 
 ## Updated by hand
 
-- Links. The page links the PDF and the NeurIPS poster page. When the paper is on arXiv, the OpenReview forum is public, or the code has a repository, add them to the resources list in the `#paper` section of `src/page.html` and, if wanted, to the hero buttons.
+- The video. `VIDEO_URL` at the top of `build.mjs` is the address behind the Video button in the hero and the Video row in the resources list. It is the share link from the SlidesLive recorder. When the talk has a public page in the SlidesLive library or on neurips.cc, put that address there and rebuild. The homepage carries the same address in three places; search `../../index.html` for `slideslive`.
+- Links. The page links the PDF, the video and the NeurIPS poster page. When the paper is on arXiv, the OpenReview forum is public, or the code has a repository, add them to the resources list in the `#paper` section of `src/page.html` and, if wanted, to the hero buttons.
 - The poster-session line in the hero. It was converted from the listing on neurips.cc; check it against the final schedule.
 - The spotlight figure in the hero (292 of 30,709 submissions).
 - `../paper-first-page.jpg`: page 1 of the PDF, cropped to the text block, 560 px wide.
